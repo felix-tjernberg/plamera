@@ -2,6 +2,10 @@
 node_modules
 /dist
 /todo
+<<<<<<< HEAD
+=======
+
+>>>>>>> newFunktion#1
 
 # local env files
 .env.local
