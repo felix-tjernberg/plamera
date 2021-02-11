@@ -3,9 +3,9 @@
     <div></div>
     <div id="list">
       <ul style="position: absolute">
-        {{
-          this.$store.state.someArray
-        }}
+        <li v-for="data in this.$store.state.someArray" :key="data">
+          {{ data }}
+        </li>
       </ul>
       <input type="button" id="add" v-on:click="on = !on" />
     </div>
