@@ -1,30 +1,29 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import VuexPersist from 'vuex-persist';
+import Vue from "vue";
+import Vuex from "vuex";
+import VuexPersist from "vuex-persist";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const vuexLocalStorage = new VuexPersist({
-  key: 'vuex',
+  key: "vuex",
   storage: window.localStorage,
-})
+});
 
 export default new Vuex.Store({
   state: {
-    someArray: []
+    someArray: [],
   },
   mutations: {
     initArray(state) {
-      state.someArray = [1, 2, 3]
+      state.someArray = [1, 2, 3];
     },
-    addNumber(state, number) {
-      state.someArray.push(Number(number))
+    addString(state, number) {
+      state.someArray.push(String(number));
     },
     resetStorage(state) {
-      state.someArray = []
+      state.someArray = [];
     },
   },
-  actions: {
-  },
-  plugins: [vuexLocalStorage.plugin]
-})
+  actions: {},
+  plugins: [vuexLocalStorage.plugin],
+});
