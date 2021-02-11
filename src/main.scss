@@ -1,0 +1,42 @@
+:root{
+   
+// colors
+$brand-color : #5DB075;
+$amber-orange: #F2994A;
+$fuschia-pink:#F178B6;
+$iris-purple:#9B51E0;
+$sky-blue:#76A9FF;
+$gradient-theme-1:linear-gradient(249.63deg, #992DFF 22.39%, #0CDCEA 120.67%);
+$gradient-theme-2:linear-gradient(213.5deg, #FF7800 3.1%, #FFC700 69.07%);
+$gradient-theme-3:linear-gradient(224.12deg, #4AB17C 26.4%, #87FA8B 89.94%);
+
+//dark/light
+$dark-200: #000;
+$dark-100: #464646;
+$light-200:#BDBDBD;
+$light-100:#F0F0F0;
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+//Insert font-family: $brand-font in your components
+$brand-font:'Inter', sans-serif;
+
+// font size
+$font-size-100: 16px;
+$font-size-200: 30px;
+
+// font-weights
+$thin-weight: 400;
+$normal-weight: 500;
+$bold-weight: 600;
+$black-weight: 700;
+
+// margin use margin: $margin-50 $margin-100 in your components
+$margin-100:32px;
+$margin-50:16px;
+
+//border radius for all elements
+$border-radius-base:8px;
+}
+//@media queries for desktop version
