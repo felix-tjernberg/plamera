@@ -1,8 +1,9 @@
 <template>
   <div class="AddTask">
-    <div></div>
     <div id="list">
-      <ul style="position: absolute">
+      <p id="MyList">My list</p>
+      <p id="NewList"><strong>New List</strong></p>
+      <ul>
         <li v-for="data in this.$store.state.someArray" :key="data">
           {{ data }}
         </li>
@@ -10,10 +11,16 @@
       <input type="button" id="add" v-on:click="on = !on" />
     </div>
     <form v-if="!on" id="overlay">
-      <button v-on:click="on = !on">X</button>
-      <input type="text" name="" id="ListTxt" v-model="info" />
-      <button @click="$store.commit('addString', info)">
-        Add
+      <input
+        placeholder="List name"
+        type="text"
+        name=""
+        id="ListTxt"
+        v-model="info"
+      />
+      <p id="close" v-on:click="on = !on">Cancel</p>
+      <button id="save" @click="$store.commit('addString', info)">
+        Add List
       </button>
       <button @click="$store.commit('resetStorage')">Reset</button>
     </form>
@@ -33,44 +40,81 @@ export default {
 };
 </script>
 <style scoped>
-@media screen {
+#MyList {
+  text-align: left;
+  margin-top: -0.2vh;
+  font-weight: bold;
+  font-size: 24px;
+}
+#NewList {
+  background-image: url("~@/assets/Plus-Icon.png");
+  background-repeat: no-repeat;
+  background-position-x: 54vw;
+  background-position-y: 1.7vh;
+  padding: 14px;
+  height: 6vh;
+  background-size: 4vh;
+  text-align: center;
+  margin-top: -2vh;
+  font-size: 24px;
+  margin-left: -53vw;
+  padding-right: 23px;
+  color: #5db075;
 }
 #add {
-  width: 3vw;
-  height: 6vh;
+  width: 20vw;
+  height: 10vh;
   background-image: url("~@/assets/AddTaskButton.png");
   background-size: 100%;
   background-repeat: no-repeat;
   border-radius: 50%;
-  margin-top: 50vh;
-  margin-left: 15vw;
+  margin-top: 25vh;
+  margin-left: 20vw;
   position: absolute;
 }
 #overlay {
-  background-color: beige;
+  background-color: #ffff;
   position: absolute;
-  width: 30vw;
-  height: 40vh;
-  margin-left: 35vw;
-  margin-top: 30vh;
-  border-radius: 10%;
+  width: 90vw;
+  height: 60vh;
+  margin-left: 3vw;
+  margin-top: -20vh;
+  border-radius: 3%;
+  box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
 }
 #ListTxt {
   position: absolute;
-  margin-top: 30vh;
-  margin-left: -10vh;
+  margin-top: 10vh;
+  margin-left: -9vh;
+  height: 6vh;
+  border-radius: 10px;
+  background-color: #e8e8e8;
+  color: #bdbdbd;
 }
-#Submit {
+
+#close {
   position: absolute;
-  margin-top: 30vh;
-  margin-left: -15.5vh;
+  margin-top: 50vh;
+  text-align: center;
+  margin-left: 40vw;
+  color: #5db075;
+}
+#save {
+  position: absolute;
+  margin-top: 40vh;
+  width: 80vw;
+  height: 7vh;
+  margin-left: -18vh;
+  border-radius: 40px;
+  font-weight: bold;
+  color: white;
+  background-color: #5db075;
 }
 #list {
   position: absolute;
-  width: 40vw;
+  width: 98vw;
   height: 60vh;
-  margin-left: 30vw;
-  margin-top: 20vh;
-  background-color: rgb(224, 224, 224);
+
+  background-color: rgb(255, 255, 255);
 }
 </style>
