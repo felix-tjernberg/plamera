@@ -19,7 +19,11 @@
         v-model="info"
       />
       <p id="close" v-on:click="on = !on">Cancel</p>
-      <button id="save" @click="$store.commit('addString', info)">
+      <button
+        v-on:click="on = !on"
+        id="save"
+        @click="$store.commit('addString', info)"
+      >
         Add List
       </button>
       <button @click="$store.commit('resetStorage')">Reset</button>
