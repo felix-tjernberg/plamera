@@ -1,5 +1,7 @@
 <template>
-  <p>
-    I'm empty inside
-  </p>
+  <div>
+    <router-link to="/list/important">Important</router-link>
+    <br />
+    <router-link to="/list/completed">Completed</router-link>
+  </div>
 </template>
