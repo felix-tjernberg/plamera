@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Calendar from '../views/Calendar'
+import CalendarView from '../views/CalendarView'
 import ListOverview from '../views/ListOverview.vue'
 import ListView from '../views/ListView'
 import Login from '../views/Login.vue'
@@ -18,8 +18,8 @@ const routes = [
   },
   {
     path: '/calendar',
-    name: 'Calendar',
-    component: Calendar
+    name: 'CalendarView',
+    component: CalendarView
   },
   {
     path: '/list/:listName',
