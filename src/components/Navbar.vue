@@ -82,9 +82,10 @@ nav {
   bottom: 0;
   left: 0;
   right: 0;
-  position: fixed;
+  position: absolute;
   background-color: white;
 }
+
 ul {
   display: flex;
   justify-content: space-evenly;
@@ -96,11 +97,6 @@ ul li {
   display: inline;
 }
 
-.navbar {
-  border-top: 1px solid rgb(229, 227, 227);
-  bottom: 0;
-  height: 70px;
-}
 button {
   margin: 23px;
   border: none;

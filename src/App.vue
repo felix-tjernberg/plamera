@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
+   <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view/>
         <Navbar> </Navbar>
   </div>
@@ -22,6 +22,7 @@ export default {
 <style>
 /* Tempory styling of a tempory nav */
 #app {
+  display: grid;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
