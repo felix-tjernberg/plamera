@@ -42,10 +42,10 @@
         {{ data }}
       </li>
     </ul>
-    <AddTask
+    <AddList
       v-if="taskOverlay"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
-    ></AddTask>
+    ></AddList>
     <AddTaskButton
       id="Button"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
@@ -55,11 +55,11 @@
 
 <script>
   import AddTaskButton from '@/components/AddTaskButton.vue'
-  import AddTask from '@/components/AddTask.vue'
+  import AddList from '@/components/AddList.vue'
   export default {
     components: {
       AddTaskButton,
-      AddTask
+      AddList
     },
     data: function() {
       return {
