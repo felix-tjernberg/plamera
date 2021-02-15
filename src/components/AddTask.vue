@@ -18,106 +18,91 @@
         id="ListTxt"
         v-model="info"
       />
-      <p id="close" v-on:click="openAddTask">Cancel</p>
+      <button @click="$store.commit('resetStorage')">Reset</button>
+
       <button
         v-on:click="openAddTask"
-        id="save"
+        class="signinbutton"
         @click="$store.commit('addString', info)"
+        style="margin-top: 30vh;"
       >
         Add List
       </button>
-      <button @click="$store.commit('resetStorage')">Reset</button>
+      <p id="close" v-on:click="openAddTask">Cancel</p>
     </form>
   </div>
 </template>
 <script>
-//import AddTaskButton from "@/components/AddTaskButton.vue";
-export default {
-  components: {
-    //AddTaskButton,
-  },
-  name: "AddTask",
-  data() {
-    return {
-      data: null,
-      on: false,
-      info: "",
-      typed: "",
-    };
-  },
-  methods: {
-    openAddTask() {
-      this.$emit("openAddTaskOverlay");
+  //import AddTaskButton from "@/components/AddTaskButton.vue";
+  export default {
+    components: {
+      //AddTaskButton,
     },
-  },
-};
+    name: 'AddTask',
+    data() {
+      return {
+        data: null,
+        on: false,
+        info: '',
+        typed: ''
+      }
+    },
+    methods: {
+      openAddTask() {
+        this.$emit('openAddTaskOverlay')
+      }
+    }
+  }
 </script>
 <style scoped>
-#MyList {
-  text-align: left;
-  margin-top: -0.2vh;
-  font-weight: bold;
-  font-size: 24px;
-}
-#NewList {
-  background-image: url("~@/assets/Plus-Icon.png");
-  background-repeat: no-repeat;
-  background-position-x: 54vw;
-  background-position-y: 1.7vh;
-  padding: 14px;
-  height: 6vh;
-  background-size: 4vh;
-  text-align: center;
-  margin-top: -2vh;
-  font-size: 24px;
-  margin-left: -53vw;
-  padding-right: 23px;
-  color: #5db075;
-}
+  #MyList {
+    text-align: left;
+    margin-top: -0.2vh;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  #NewList {
+    background-image: url('~@/assets/Plus-Icon.png');
+    background-repeat: no-repeat;
+    background-position-x: 54vw;
+    background-position-y: 1.7vh;
+    padding: 14px;
+    height: 6vh;
+    background-size: 4vh;
+    text-align: center;
+    margin-top: -2vh;
+    font-size: 24px;
+    margin-left: -53vw;
+    padding-right: 23px;
+    color: #5db075;
+  }
 
-#overlay {
-  background-color: #ffff;
-  position: absolute;
-  width: 90vw;
-  height: 60vh;
-  margin-left: 3vw;
-  margin-top: 10vh;
-  border-radius: 3%;
-  box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
-}
-#ListTxt {
-  position: absolute;
-  margin-top: 10vh;
-  margin-left: -9vh;
-  height: 6vh;
-  border-radius: 10px;
-  background-color: #e8e8e8;
-  color: #bdbdbd;
-}
+  #overlay {
+    background-color: #ffff;
+    position: absolute;
+    width: 90vw;
+    height: 60vh;
+    margin-left: 3vw;
+    margin-top: -40vh;
+    border-radius: 3%;
+    box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
+  }
+  #ListTxt {
+    margin-top: 5vh;
+  }
 
-#close {
-  position: absolute;
-  margin-top: 50vh;
-  text-align: center;
-  margin-left: 40vw;
-  color: #5db075;
-}
-#save {
-  position: absolute;
-  margin-top: 40vh;
-  width: 80vw;
-  height: 7vh;
-  margin-left: -18vh;
-  border-radius: 40px;
-  font-weight: bold;
-  color: white;
-  background-color: #5db075;
-}
-#list {
-  position: absolute;
-  width: 98vw;
-  height: 60vh;
+  #save {
+    position: absolute;
+    margin-top: 40vh;
+    width: 80vw;
+    height: 7vh;
+    margin-left: -20vh;
+  }
+  #list {
+    position: absolute;
+    width: 98vw;
+    height: 60vh;
 
-  background-color: rgb(255, 255, 255);
-}
+    background-color: rgb(255, 255, 255);
+  }
 </style>
