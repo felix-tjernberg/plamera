@@ -38,7 +38,7 @@
     components: {
       //AddTaskButton,
     },
-    name: 'AddTask',
+    name: 'AddList',
     data() {
       return {
         data: null,
