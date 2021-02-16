@@ -1,125 +1,39 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-          target="_blank"
-          rel="noopener"
-          >babel</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
-          target="_blank"
-          rel="noopener"
-          >pwa</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
-          target="_blank"
-          rel="noopener"
-          >vuex</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    <div id="navbar">
+      <router-link to="/" id="back">Back</router-link>
+
+      <h1 id="header">My Tasks</h1>
+      <p id="filter">Filter</p>
+    </div>
+
+    <input type="field" placeholder="Search" id="SearchBar" />
+    <div>
+      <p id="important"><strong> Important</strong></p>
+    </div>
+
+    <p id="completed"><strong>Completed</strong></p>
+    <hr style="margin-top: -3vh" />
+
+    <AddTask></AddTask>
   </div>
 </template>
 
 <script>
+  import AddTask from '@/components/AddTask.vue'
   export default {
-    name: 'HelloWorld',
-    props: {
-      msg: String
+    name: 'MyTasks',
+    data() {
+      return {
+        data: null
+      }
+    },
+    components: {
+      AddTask
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h3 {
     margin: 40px 0 0;
@@ -134,5 +48,68 @@
   }
   a {
     color: #42b983;
+  }
+  #filter {
+    margin: 0%;
+    text-decoration: none;
+    color: #5db075;
+    font-weight: bold;
+    display: flex;
+    font-size: 22px;
+    align-self: center;
+  }
+  #back {
+    text-decoration: none;
+    color: #5db075;
+    font-weight: bold;
+    display: flex;
+    font-size: 22px;
+    align-self: center;
+  }
+  #navbar {
+    display: flex;
+
+    justify-content: space-between;
+  }
+  #SearchBar {
+    margin-top: 20px;
+    border-radius: 30px;
+    width: 90vw;
+    height: 7vh;
+    background-color: #e8e8e8;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #important {
+    background-repeat: no-repeat;
+    background-position-x: 58vw;
+    background-position-y: 1.3vh;
+    background-size: 40vh;
+    padding: 14px;
+    height: 6vh;
+    display: flex;
+    background-size: 4vh;
+    margin-top: 3vh;
+    font-size: 16px;
+    padding-right: 23px;
+  }
+  #completed {
+    background-repeat: no-repeat;
+    background-position-x: 58vw;
+    background-position-y: 1.3vh;
+    background-size: 40vh;
+    padding: 2.1vh;
+    height: 6vh;
+    display: flex;
+    background-size: 4vh;
+    margin-top: -6vh;
+    font-size: 16px;
+    padding-right: 23px;
+  }
+  #header {
+    text-align: center;
+    margin: 0;
+    align-self: center;
   }
 </style>
