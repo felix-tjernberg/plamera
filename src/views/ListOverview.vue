@@ -72,6 +72,7 @@
 </script>
 
 <style>
+
   * {
     box-sizing: border-box;
   }
@@ -125,7 +126,7 @@
     background-color: #fff;
   }
   /* Set a style for the submit button */
-  .categorybutton {
+.categorybutton {
     background-color: #e8e8e8;
     color: #fff;
     padding: 16px 32px;
@@ -136,11 +137,11 @@
     border-radius: 8px;
     height: 94px;
     width: 343px;
-    letter-spacing: -0.02em;
     font-style: bold;
-    top: 0px;
-    left: 26px;
-    line-height: 19px;
+    text-align: left;
+  
+   
+    
     
   }
   input[type='submit'] {
