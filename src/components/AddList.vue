@@ -25,6 +25,7 @@
         class="signinbutton"
         @click="$store.commit('addString', info)"
         style="margin-top: 30vh;"
+        id="save"
       >
         Add List
       </button>
@@ -82,8 +83,8 @@
     position: absolute;
     width: 90vw;
     height: 60vh;
-    margin-left: 3vw;
-    margin-top: -40vh;
+    margin-left: 0vw;
+    margin-top: -60vh;
     border-radius: 3%;
     box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
   }
@@ -92,11 +93,9 @@
   }
 
   #save {
-    position: absolute;
     margin-top: 40vh;
     width: 80vw;
     height: 7vh;
-    margin-left: -20vh;
   }
   #list {
     position: absolute;
