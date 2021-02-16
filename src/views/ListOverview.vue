@@ -1,14 +1,29 @@
 <template>
   <div>
-    <h1>List Overview</h1>
-    <!--Button for cathegories-->
+    <div class="hello">
+      <div id="navbar">
+        <router-link to="/" id="back">Back</router-link>
+
+        <h1 id="header">List Overview</h1>
+        <p id="filter">Filter</p>
+      </div>
+
+      <input type="field" placeholder="Search" id="SearchBar" />
+      <div>
+        <p id="important"><strong> Important</strong></p>
+      </div>
+
+      <p id="completed"><strong>Completed</strong></p>
+    </div>
+
     <hr />
+    <!--Button for cathegories-->
     <div class="container">
       <input
         type="submit"
         value="Hemma"
         :style="cssProps"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Hemma')"
       />
 
@@ -16,7 +31,7 @@
         type="submit"
         value="Jobb"
         :style="cssProp"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Jobb')"
       />
       <input
@@ -26,7 +41,7 @@
             'linear-gradient(249.63deg, #992DFF 22.39%, #0CDCEA 120.67%)'
         }"
         value="Personligt"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Personligt')"
       />
     </div>
@@ -106,26 +121,11 @@
     font-size: 30px;
     line-height: 36px;
   }
-  span {
-    display: flex;
-    width: 43px;
-    height: 19px;
-    right: 10px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    color: #000;
-    text-align: right;
-  }
   .icon {
     display: flex;
     color: #000;
   }
-  .importantcompletedactivies {
-    position: absolute;
-    font-size: 14px;
-  }
+
   .btn-back {
     display: flex;
     background-color: #fff;
@@ -138,7 +138,6 @@
     font-size: 16px;
     line-height: 19px;
   }
-
   /* Add padding to containers */
   .container {
     display: flex;
@@ -151,7 +150,7 @@
     background-color: #fff;
   }
   /* Set a style for the submit button */
-  .cathegorybutton {
+  .categorybutton {
     background-color: #e8e8e8;
     color: #fff;
     padding: 16px 32px;
@@ -175,7 +174,7 @@
     text-align: left;
     line-height: 19px;
   }
-  .importantcompletedbutton {
+  .container {
     display: flex;
     background-color: #fff;
     border: none;
@@ -193,6 +192,69 @@
   #Button {
     margin-top: 15vh;
     margin-left: 78.5vw;
+  }
+  #header {
+    text-align: center;
+    margin: 0;
+    align-self: center;
+  }
+  #completed {
+    background-repeat: no-repeat;
+    background-position-x: 58vw;
+    background-position-y: 1.3vh;
+    background-size: 40vh;
+    padding: 2.1vh;
+    height: 6vh;
+    display: flex;
+    background-size: 4vh;
+    margin-top: -6vh;
+    font-size: 16px;
+    padding-right: 23px;
+  }
+  #filter {
+    margin: 0%;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    font-size: 22px;
+    align-self: center;
+  }
+  #back {
+    text-decoration: none;
+    color: #5db075;
+    font-weight: bold;
+    display: flex;
+    font-size: 22px;
+    align-self: center;
+  }
+  #navbar {
+    display: flex;
+
+    justify-content: space-between;
+  }
+  #SearchBar {
+    margin-top: 20px;
+    border-radius: 30px;
+    width: 90vw;
+    height: 7vh;
+    background-color: #e8e8e8;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #important {
+    background-repeat: no-repeat;
+    background-position-x: 58vw;
+    background-position-y: 1.3vh;
+    background-size: 40vh;
+    padding: 14px;
+    height: 6vh;
+    display: flex;
+    background-size: 4vh;
+    margin-top: 3vh;
+    font-size: 16px;
+    padding-right: 23px;
   }
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
   /* Portrait and Landscape */
