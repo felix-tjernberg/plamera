@@ -190,6 +190,10 @@
     margin: 5px;
     color: #5db075;
   }
+  #Button {
+    margin-top: 15vh;
+    margin-left: 78.5vw;
+  }
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
   /* Portrait and Landscape */
   @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {

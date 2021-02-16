@@ -23,5 +23,6 @@ export default {
   border: none;
   height: 58px;
   width: 58px;
+  
 }
 </style>
