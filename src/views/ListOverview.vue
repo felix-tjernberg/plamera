@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>List Overview</h1>
-    <!--Button for cathegories-->
+    
     <hr />
+<!--Button for cathegories-->
     <div class="container">
       <input
         type="submit"
@@ -37,19 +38,23 @@
       @click="goToListOverviewempty()"
     />
     <add-task-button />
+    
+    
+    
+
   </div>
 </template>
 
 <script>
   import AddTaskButton from '@/components/AddTaskButton.vue'
+  
   export default {
     components: {
-      AddTaskButton
+      AddTaskButton,
+      
     },
     data: function() {
       return {
-        //isActive: false, <h1 v-if="isActive">Hemma/Jobb/Personligt</h1>@click="isActive = !isActive"
-
         cssProps: {
           backgroundImage: `url(${require('@/assets/monstera.jpg')})`
         },
