@@ -15,14 +15,15 @@
 
       <p id="completed"><strong>Completed</strong></p>
     </div>
-    <!--Button for cathegories-->
+
     <hr />
+    <!--Button for cathegories-->
     <div class="container">
       <input
         type="submit"
         value="Hemma"
         :style="cssProps"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Hemma')"
       />
 
@@ -30,7 +31,7 @@
         type="submit"
         value="Jobb"
         :style="cssProp"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Jobb')"
       />
       <input
@@ -40,7 +41,7 @@
             'linear-gradient(249.63deg, #992DFF 22.39%, #0CDCEA 120.67%)'
         }"
         value="Personligt"
-        class="cathegorybutton"
+        class="categorybutton"
         @click="goToList('Personligt')"
       />
     </div>
@@ -120,26 +121,11 @@
     font-size: 30px;
     line-height: 36px;
   }
-  span {
-    display: flex;
-    width: 43px;
-    height: 19px;
-    right: 10px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    color: #000;
-    text-align: right;
-  }
   .icon {
     display: flex;
     color: #000;
   }
-  .importantcompletedactivies {
-    position: absolute;
-    font-size: 14px;
-  }
+
   .btn-back {
     display: flex;
     background-color: #fff;
@@ -152,7 +138,6 @@
     font-size: 16px;
     line-height: 19px;
   }
-
   /* Add padding to containers */
   .container {
     display: flex;
@@ -165,7 +150,7 @@
     background-color: #fff;
   }
   /* Set a style for the submit button */
-  .cathegorybutton {
+  .categorybutton {
     background-color: #e8e8e8;
     color: #fff;
     padding: 16px 32px;
@@ -189,7 +174,7 @@
     text-align: left;
     line-height: 19px;
   }
-  .importantcompletedbutton {
+  .container {
     display: flex;
     background-color: #fff;
     border: none;
