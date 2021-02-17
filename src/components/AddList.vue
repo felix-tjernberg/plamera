@@ -22,9 +22,8 @@
 
       <button
         v-on:click="openAddTask"
-        class="signinbutton"
+        class="addlistbutton"
         @click="$store.commit('addString', info)"
-        style="margin-top: 30vh;"
         id="save"
       >
         Add List
@@ -82,7 +81,7 @@
     background-color: #ffff;
     position: fixed;
     width: 90vw;
-    height: 60vh;
+    height: 42vh;
     margin-left: 0vw;
     margin-top: -20vh;
     border-radius: 3%;
@@ -90,10 +89,11 @@
   }
   #ListTxt {
     margin-top: 5vh;
+    width: 80vw;
   }
 
   #save {
-    margin-top: 40vh;
+    margin-top: 10vh;
     width: 80vw;
     height: 7vh;
   }
@@ -103,5 +103,19 @@
     height: 60vh;
 
     background-color: rgb(255, 255, 255);
+  }
+  .addlistbutton {
+    background-color: #5db075;
+    color: #fff;
+    padding: 16px 32px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
   }
 </style>

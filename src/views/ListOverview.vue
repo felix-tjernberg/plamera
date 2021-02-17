@@ -2,7 +2,7 @@
   <div class="container">
     <div class="head">
       <router-link to="/" id="back">Back</router-link>
-      <h1>My Tasks</h1>
+      <h1>My Lists</h1>
     </div>
     <div id="defaultLists">
       <div>
@@ -67,7 +67,6 @@
     margin-bottom: 15px;
   }
   h1 {
-    
     height: 36px;
     left: 16px;
     right: 16px;
