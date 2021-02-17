@@ -80,11 +80,11 @@
 
   #overlay {
     background-color: #ffff;
-    position: absolute;
+    position: fixed;
     width: 90vw;
     height: 60vh;
     margin-left: 0vw;
-    margin-top: -60vh;
+    margin-top: -20vh;
     border-radius: 3%;
     box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
   }

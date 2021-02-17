@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <button class="btn-back" @click="goToListOverview()">Back</button>
-    <h1>{{$route.params.listName}}</h1>
+    <button class="btn-back" @click="goToListOverview()" id="back">Back</button>
+    <h1>{{ $route.params.listName }}</h1>
     <p class="tasksp">No Tasks added yet</p>
-    <add-task-button/>
+    <AddList
+      id="TaskOverlay"
+      v-if="taskOverlay"
+      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+    ></AddList>
+    <AddTaskButton
+      id="Button"
+      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+    ></AddTaskButton>
   </div>
 </template>
 
 <script>
-import AddTaskButton from '@/components/AddTaskButton.vue'
+  import AddTaskButton from '@/components/AddTaskButton.vue'
+  import AddList from '@/components/AddList.vue'
   export default {
     components: {
-      AddTaskButton
+      AddTaskButton,
+      AddList
     },
     methods: {
       goToListOverview() {
         this.$router.push('/')
       }
+    },
+    data: function() {
+      return { taskOverlay: false }
     }
   }
 </script>
 
 <style>
- .tasksp {
+  .tasksp {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -40,5 +53,9 @@ import AddTaskButton from '@/components/AddTaskButton.vue'
     text-align: center;
     color: #787885;
     margin: 30px;
+  }
+  #TaskOverlay {
+    margin-top: -25vh;
+    margin-left: 3vw;
   }
 </style>

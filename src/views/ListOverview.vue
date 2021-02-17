@@ -6,10 +6,10 @@
     </div>
     <div id="defaultLists">
       <div>
-        <img src="@/assets/Task-Completed-Icon.png" alt="" /><a
-          href="/Completed"
+        <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
+          :to="'/list/' + completed"
           id="completed"
-          >Completed</a
+          >Completed</router-link
         >
       </div>
 
@@ -23,31 +23,29 @@
     </div>
     <hr />
     <div class="listContainer">
-      <ul>
-        <li v-for="data in this.$store.state.someArray" :key="data">
-          {{ data }}
-        </li>
-      </ul>
+      <AddList
+        v-if="taskOverlay"
+        v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+      ></AddList>
+      <ListCard></ListCard>
 
       <AddTaskButton
         id="Button"
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
       ></AddTaskButton>
-      <AddList
-        v-if="taskOverlay"
-        v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
-      ></AddList>
     </div>
   </div>
 </template>
 
 <script>
+  import ListCard from '@/components/ListCard.vue'
   import AddTaskButton from '@/components/AddTaskButton.vue'
   import AddList from '@/components/AddList.vue'
   export default {
     components: {
       AddTaskButton,
-      AddList
+      AddList,
+      ListCard
     },
     data: function() {
       return {
@@ -86,8 +84,9 @@
     outline: none;
   }
   #Button {
-    margin-top: 40vh;
-    margin-left: 70vw;
+    bottom: 0;
+    right: 0;
+    position: fixed;
   }
 
   #back {
@@ -96,7 +95,7 @@
     font-weight: bold;
     position: absolute;
     margin-left: -25vh;
-    margin-top: -3vh;
+    margin-top: -2vh;
     font-size: 22px;
   }
 
