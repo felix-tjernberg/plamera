@@ -1,15 +1,5 @@
 <template>
   <div class="AddTask">
-    <!--<div id="list">
-      <p id="MyList">My list</p>
-      <p id="NewList"><strong>New List</strong></p>
-      <ul>
-        <li v-for="data in this.$store.state.someArray" :key="data">
-          {{ data }}
-        </li>
-      </ul>
-      <AddTaskButton v-on:click="openOverlay"></AddTaskButton>
-    </div>-->
     <form id="overlay">
       <input
         placeholder="List name"
@@ -23,7 +13,7 @@
       <button
         v-on:click="openAddTask"
         class="signinbutton"
-        @click="$store.commit('addString', info)"
+        @click="$store.commit('addTask', info)"
         style="margin-top: 30vh;"
         id="save"
       >
@@ -34,12 +24,9 @@
   </div>
 </template>
 <script>
-  //import AddTaskButton from "@/components/AddTaskButton.vue";
   export default {
-    components: {
-      //AddTaskButton,
-    },
-    name: 'AddList',
+    components: {},
+    name: 'AddTask',
     data() {
       return {
         data: null,
