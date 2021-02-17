@@ -39,6 +39,16 @@ const routes = [
     path: '/testarea',
     name: 'TestArea',
     component: TestArea
+  },
+  {
+    path: '/important',
+    name: 'Important',
+    component: ListView
+  },
+  {
+    path: '/completed',
+    name: 'Completed',
+    component: ListView
   }
 ]
 
