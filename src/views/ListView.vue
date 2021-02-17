@@ -2,12 +2,16 @@
   <div id="app">
     <button class="btn-back" @click="goToListOverview()" id="back">Back</button>
     <h1>{{ $route.params.listName }}</h1>
-    <p class="tasksp">No Tasks added yet</p>
-    <AddList
+    <AddTask
       id="TaskOverlay"
       v-if="taskOverlay"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
-    ></AddList>
+    ></AddTask>
+    <p class="tasksp" v-if="this.$store.state.someString < [0]">
+      No Tasks added yet
+    </p>
+
+    <TaskCard></TaskCard>
     <AddTaskButton
       id="Button"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
@@ -17,11 +21,13 @@
 
 <script>
   import AddTaskButton from '@/components/AddTaskButton.vue'
-  import AddList from '@/components/AddList.vue'
+  import AddTask from '@/components/AddTask.vue'
+  import TaskCard from '@/components/TaskCard.vue'
   export default {
     components: {
       AddTaskButton,
-      AddList
+      AddTask,
+      TaskCard
     },
     methods: {
       goToListOverview() {
@@ -55,7 +61,8 @@
     margin: 30px;
   }
   #TaskOverlay {
-    margin-top: -25vh;
+    margin-top: 30vh;
     margin-left: 3vw;
+    position: fixed;
   }
 </style>
