@@ -6,6 +6,7 @@
       v-for="data in this.$store.state.someArray"
       :key="data"
       :to="'/list/' + data"
+      :theme="'/list/' + Theme"
       >{{ data }}</router-link
     >
   </div>
