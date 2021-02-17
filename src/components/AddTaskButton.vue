@@ -1,9 +1,15 @@
 <template>
-  <button class="addTaskButton"></button>
+  <button class="addTaskButton" v-on:click="openAddTask"></button>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openAddTask() {
+      this.$emit("openAddTaskOverlay");
+    },
+  },
+};
 </script>
 
 <style scoped>
