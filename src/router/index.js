@@ -7,8 +7,7 @@ import ListView from '../views/ListView'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import TestArea from '../views/TestArea.vue'
-
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -44,7 +43,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router
