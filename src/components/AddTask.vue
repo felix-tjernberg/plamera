@@ -69,7 +69,6 @@
     background-color: #ffff;
     position: fixed;
     width: 90vw;
-    height: 60vh;
     margin-left: 0vw;
     margin-top: -20vh;
     border-radius: 3%;
