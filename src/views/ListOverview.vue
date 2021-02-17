@@ -67,7 +67,7 @@
     margin-bottom: 15px;
   }
   h1 {
-    position: absolute;
+    
     height: 36px;
     left: 16px;
     right: 16px;
@@ -84,14 +84,14 @@
     outline: none;
   }
   #Button {
-    bottom: 0;
-    right: 0;
+    bottom: 80px;
+    right: 30px;
     position: fixed;
   }
 
   #back {
     text-decoration: none;
-    color: #5db075;
+    color: #ffffff;
     font-weight: bold;
     position: absolute;
     margin-left: -25vh;
