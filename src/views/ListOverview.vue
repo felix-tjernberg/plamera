@@ -27,6 +27,7 @@
         v-if="taskOverlay"
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
       ></AddList>
+
       <ListCard></ListCard>
 
       <AddTaskButton
@@ -67,7 +68,6 @@
     margin-bottom: 15px;
   }
   h1 {
-    
     height: 36px;
     left: 16px;
     right: 16px;
