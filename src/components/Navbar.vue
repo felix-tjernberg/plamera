@@ -36,7 +36,7 @@
  -->
 
       <li>
-        <router-link v-slot="{ isActive }" to="/4">
+        <router-link v-slot="{ isActive }" to="/settings">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="settings">
           </NavbarIcon>
         </router-link>
