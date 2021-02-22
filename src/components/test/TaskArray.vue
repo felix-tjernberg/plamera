@@ -3,18 +3,21 @@
     <section>
       <h2>task array test</h2>
       <!-- <p>Raw json: {{ this.$store.state.taskArray }}</p> -->
-      <ul
-        v-for="(taskObject, taskArrayNumber) in this.$store.state.taskArray"
-        :key="taskArrayNumber"
-      >
-        <li>
+      <ul>
+        <!-- istället för taskArrayNumber så blir det taskId istället -->
+        <li
+          v-for="(taskObject, taskArrayNumber) in this.$store.state.taskArray"
+          :key="taskArrayNumber"
+        >
           <p>
-            {{ taskObject.title }} + c: {{ taskObject.completed }} + i:
+            {{ taskObject.title }} / c: {{ taskObject.completed }} i:
             {{ taskObject.important }}
           </p>
+          <p style="font-size: 9px;">raw json: {{ taskObject }}</p>
           <button
             @click="
-              $store.commit('completeTask', {
+              /*doSomet(taskObject.uuid, color,)*/
+              $store.commit('editTask', {
                 taskId: taskObject.uuid
               })
             "
@@ -33,26 +36,15 @@
         </li>
       </ul>
     </section>
-    <form>
-      <input v-model="title" />
-      <button
-        @click="
-          $store.commit('addTask', {
-            title: title,
-            listId: listId
-          })
-        "
-      >
-        Add task
-      </button>
-    </form>
-    <!-- {{ filteredTaskArray }} -->
     <ol>
-      <li v-for="(task, arrayNumber) in filteredTaskArray" :key="arrayNumber">
-        <p>{{ task.title }}</p>
+      <li
+        v-for="(taskObject, arrayNumber) in filteredTaskArray"
+        :key="arrayNumber"
+      >
+        <p>{{ taskObject.title }}</p>
       </li>
     </ol>
-    {{ this.$store.state.testFind }}
+    <!-- {{ filteredTaskArray }} -->
   </div>
 </template>
 
@@ -60,7 +52,7 @@
   export default {
     computed: {
       filteredTaskArray() {
-        const taskArray = this.$store.state.taskArray
+        const taskArray = this.$store.state.taskArray // Detta ska konverteras från ett object till array så att vi kan använda filter
         const filterTaskArrayByListId = taskArray.filter(
           task => task.listId === this.listId
         )

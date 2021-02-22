@@ -40,6 +40,11 @@ const routes = [
     path: '/testarea',
     name: 'TestArea',
     component: TestArea
+  },
+  {
+    path: '/testarea/:listName/:listId',
+    name: 'TestAreaList',
+    component: TestArea
   }
 ]
 

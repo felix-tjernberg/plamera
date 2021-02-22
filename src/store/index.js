@@ -13,19 +13,22 @@ const vuexLocalStorage = new VuexPersist({
 export default new Vuex.Store({
   state: {
     listArray: [],
-    taskArray: [],
-    testFind: []
+    taskArray: []
   },
 
   mutations: {
-    addList(state, payload /* theme, icon */) {
+    addList(state, payload /* theme, url, maybe:icon */) {
       const uuid = uuidv4()
 
-      state.listArray.push({ title: payload, uuid: uuid /*theme icon */ })
+      state.listArray.push({
+        title: payload,
+        uuid: uuid /*theme, url: '/list/' + payload.title + '/' + uuid */
+      })
     },
 
     addTask(state, payload) {
       const uuid = uuidv4()
+      //state.taskObject{uuid} = {title, color, listId}
 
       state.taskArray.push({
         title: payload.title,
@@ -45,6 +48,9 @@ export default new Vuex.Store({
       const taskObject = state.taskArray.find(
         task => task.uuid === payload.taskId
       )
+      // state.taskArray{uuid}.completed = !taskObject.completed
+      // state.taskArray{uuid}.color = payLoad.color
+      // state.taskArray{uuid}.edit = payLoad.edit
       taskObject.completed = !taskObject.completed
 
       state.taskArray[taskIndex] = taskObject
@@ -62,7 +68,8 @@ export default new Vuex.Store({
       state.taskArray[taskIndex] = taskObject
     },
 
-    /*TODO changeTaskName, changeTaskColor, changeDueDate, changeParentList */
+    /*TODO  changeTaskColor, Maybe:openTaskEditOverlay changeDueDate, changeParentList */
+    //changeTaskName: Object.assign(state.taskObject{taskId/uuid}, {title: payload.title, color, })
 
     resetStorage(state) {
       state.listArray = []
