@@ -1,24 +1,27 @@
 <template>
   <div>
     <section>
-      <h2>task array test</h2>
-      <!-- <p>Raw json: {{ this.$store.state.taskArray }}</p> -->
+      <h2>task objects</h2>
+      <!-- <p style="font-size: 8px">
+        Raw json: {{ this.$store.state.taskObjects }}
+      </p> -->
       <ul>
-        <!-- istället för taskArrayNumber så blir det taskId istället -->
         <li
-          v-for="(taskObject, taskArrayNumber) in this.$store.state.taskArray"
+          v-for="(taskObject, taskObjectId, taskArrayNumber) in this.$store
+            .state.taskObjects"
           :key="taskArrayNumber"
         >
           <p>
             {{ taskObject.title }} / c: {{ taskObject.completed }} i:
             {{ taskObject.important }}
           </p>
-          <p style="font-size: 9px;">raw json: {{ taskObject }}</p>
+          <p style="font-size: 9px;">
+            raw json for key: {{ taskObjectId }} + {{ taskObject }}
+          </p>
           <button
             @click="
-              /*doSomet(taskObject.uuid, color,)*/
-              $store.commit('editTask', {
-                taskId: taskObject.uuid
+              $store.commit('completeTask', {
+                taskId: taskObjectId
               })
             "
           >
@@ -27,36 +30,76 @@
           <button
             @click="
               $store.commit('emphasizeTask', {
-                taskId: taskObject.uuid
+                taskId: taskObjectId
               })
             "
           >
             imoprtant {{ taskObject.title }}
+          </button>
+          <button
+            @click="
+              $store.commit('removeTask', {
+                taskId: taskObjectId
+              })
+            "
+          >
+            Remove {{ taskObject.title }}
           </button>
         </li>
       </ul>
     </section>
     <ol>
       <li
-        v-for="(taskObject, arrayNumber) in filteredTaskArray"
+        v-for="(taskObject, taskObjectId, arrayNumber) in filteredTaskObjects"
         :key="arrayNumber"
       >
-        <p>{{ taskObject.title }}</p>
+        <p>Task title: {{ taskObject.title }}</p>
+        <!-- <p>Task title: {{ taskObject[1].title }}</p> -->
+        <p style="font-size: 9px">List id: {{ taskObject.listId }}</p>
+        <!-- <p style="font-size: 9px">List id: {{ taskObject[1].listId }}</p> -->
+        <p style="font-size: 9px">Task id: {{ taskObjectId }}</p>
+        <!-- <p style="font-size: 9px">Task id: {{ taskObject[0] }}</p> -->
+        <button
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          complete {{ taskObject.title }}
+        </button>
+        <button
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          imoprtant {{ taskObject.title }}
+        </button>
       </li>
     </ol>
-    <!-- {{ filteredTaskArray }} -->
+    <!-- <p style="font-size: 9px">{{ filteredTaskObjects }}</p> -->
   </div>
 </template>
 
 <script>
   export default {
     computed: {
-      filteredTaskArray() {
-        const taskArray = this.$store.state.taskArray // Detta ska konverteras från ett object till array så att vi kan använda filter
-        const filterTaskArrayByListId = taskArray.filter(
-          task => task.listId === this.listId
+      filteredTaskObjects() {
+        // const taskObjectsEntries = Object.entries(this.$store.state.taskObjects)
+        // const filteredTaskObjectsArray = taskObjectsEntries.filter(
+        //   taskObject => taskObject[1].important === true
+        // )
+        // const filteredTaskObjects = Object.fromEntries(filteredTaskObjectsArray)
+
+        const filteredTaskObjects = Object.fromEntries(
+          Object.entries(this.$store.state.taskObjects).filter(
+            taskObject => taskObject[1].important === true
+          )
         )
-        return filterTaskArrayByListId
+
+        return filteredTaskObjects
       }
     },
     data() {

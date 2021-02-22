@@ -12,68 +12,58 @@ const vuexLocalStorage = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    listArray: [],
-    taskArray: []
+    listObjects: {},
+    taskObjects: {}
   },
 
   mutations: {
-    addList(state, payload /* theme, url, maybe:icon */) {
-      const uuid = uuidv4()
+    addList(state, payload /* theme, url */) {
+      const uuid = String(uuidv4())
 
-      state.listArray.push({
-        title: payload,
-        uuid: uuid /*theme, url: '/list/' + payload.title + '/' + uuid */
+      Vue.set(state.listObjects, uuid, {
+        title: payload.title,
+        url: '/list/' + payload.title + '/' + uuid,
+        theme: '#000'
       })
     },
 
     addTask(state, payload) {
-      const uuid = uuidv4()
-      //state.taskObject{uuid} = {title, color, listId}
+      const uuid = String(uuidv4())
 
-      state.taskArray.push({
+      Vue.set(state.taskObjects, uuid, {
         title: payload.title,
-        uuid: uuid,
-        listId: payload.listId /* '838648b4-8fc1-4c26-a46d-2c96794dab8d' */,
-        important: false,
-        completed: false
-        /* color: 
-        dueDate: */
+        listId: payload.listId,
+        color: payload.color,
+        completed: false,
+        important: false
+        /*dueDate: payload.dueDate */
       })
     },
 
     completeTask(state, payload) {
-      const taskIndex = state.taskArray.findIndex(
-        task => task.uuid === payload.taskId
-      )
-      const taskObject = state.taskArray.find(
-        task => task.uuid === payload.taskId
-      )
-      // state.taskArray{uuid}.completed = !taskObject.completed
-      // state.taskArray{uuid}.color = payLoad.color
-      // state.taskArray{uuid}.edit = payLoad.edit
-      taskObject.completed = !taskObject.completed
-
-      state.taskArray[taskIndex] = taskObject
+      state.taskObjects[payload.taskId].completed = !state.taskObjects[
+        payload.taskId
+      ].completed
     },
 
     emphasizeTask(state, payload) {
-      const taskIndex = state.taskArray.findIndex(
-        task => task.uuid === payload.taskId
-      )
-      const taskObject = state.taskArray.find(
-        task => task.uuid === payload.taskId
-      )
-      taskObject.important = !taskObject.important
-
-      state.taskArray[taskIndex] = taskObject
+      state.taskObjects[payload.taskId].important = !state.taskObjects[
+        payload.taskId
+      ].important
     },
 
-    /*TODO  changeTaskColor, Maybe:openTaskEditOverlay changeDueDate, changeParentList */
-    //changeTaskName: Object.assign(state.taskObject{taskId/uuid}, {title: payload.title, color, })
+    removeTask(state, payload) {
+      Vue.delete(state.taskObjects, payload.taskId)
+    },
+
+    /*TODO  editTask, Maybe: changeDueDate, changeParentList */
+
+    //editTask   Object.assign(state.taskObject{taskId/uuid}, {title: payload.title, color, })
+    //state.taskObject{uuid} = {title, color, listId}
 
     resetStorage(state) {
-      state.listArray = []
-      state.taskArray = []
+      state.listObjects = {}
+      state.taskObjects = {}
     }
   },
   actions: {},

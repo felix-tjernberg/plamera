@@ -1,13 +1,16 @@
 <template>
   <div>
-    {{ this.$route.params.listName }}
     <button @click="$store.commit('resetStorage')">clear lists</button>
     <h1>Testing Area</h1>
+    {{ this.$route.params.listName }}
     <section>
-      <h2>list array</h2>
-      <p>Raw json: {{ this.$store.state.listArray }}</p>
+      <h2>list objects</h2>
+      <p style="font-size: 9px">
+        Raw json of listObjects: {{ this.$store.state.listObjects }}
+      </p>
       <p
-        v-for="(listObject, listArrayNumber) in this.$store.state.listArray"
+        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
+          .listObjects"
         :key="listArrayNumber"
       >
         {{ listObject.title }}
@@ -15,7 +18,16 @@
     </section>
     <form>
       <input v-model="listName" />
-      <button @click="$store.commit('addList', listName)">Add list</button>
+      <button
+        @click="
+          $store.commit('addList', {
+            title: listName,
+            theme: '#000'
+          })
+        "
+      >
+        Add list
+      </button>
     </form>
     <task-array :listId="this.$route.params.listId" />
     <test-add-task :listId="this.$route.params.listId" />

@@ -5,7 +5,8 @@
       @click="
         $store.commit('addTask', {
           title: title,
-          listId: listId
+          listId: listId,
+          color: '#123'
         })
       "
     >
@@ -16,6 +17,11 @@
 
 <script>
   export default {
+    data() {
+      return {
+        title: ''
+      }
+    },
     props: {
       listId: String
     }
