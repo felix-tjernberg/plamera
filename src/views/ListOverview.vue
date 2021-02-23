@@ -1,24 +1,19 @@
 <template>
   <div class="container">
     <div class="head">
-      <router-link to="/" id="back">Back</router-link>
       <h1>My Lists</h1>
     </div>
     <div id="defaultLists">
       <div>
-        <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
-          :to="'/list/' + completed"
-          id="completed"
-          >Completed</router-link
-        >
+        <img src="@/assets/Task-Completed-Icon.png" alt="" />
+        <router-link to="/completed" id="completed">Completed</router-link>
       </div>
 
       <div>
-        <img src="@/assets/Star-Icon.png" alt="" id="star" /><a
-          href="/important"
-          id="important"
-          >Important</a
-        >
+        <img src="@/assets/Star-Icon.png" alt="" id="star" />
+        <router-link to="/important" id="important">
+          Important
+        </router-link>
       </div>
     </div>
     <hr />
@@ -27,6 +22,7 @@
         v-if="taskOverlay"
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
       ></AddList>
+
       <ListCard></ListCard>
 
       <AddTaskButton
@@ -51,8 +47,7 @@
       return {
         taskOverlay: false
       }
-    },
-    methods: {}
+    }
   }
 </script>
 

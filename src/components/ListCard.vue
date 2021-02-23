@@ -3,25 +3,16 @@
     <router-link
       class="ListCard"
       v-on:goToList="listname"
-      v-for="data in this.$store.state.someArray"
-      :key="data"
-      :to="'/list/' + data"
-      :theme="'/list/' + Theme"
-      >{{ data }}</router-link
+      v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
+        .listObjects"
+      :key="listArrayNumber"
+      :to="listObject.url"
+      :theme="listObject.theme"
     >
+      {{ listObject.title }}
+    </router-link>
   </div>
 </template>
-
-<script>
-  export default {
-    props: ['Name', 'Url', 'Theme'],
-    methods: {
-      goToList(listName) {
-        this.$router.push('/list/' + listName)
-      }
-    }
-  }
-</script>
 
 <style scoped>
   .ListCard {
