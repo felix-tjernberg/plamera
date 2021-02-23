@@ -1,29 +1,16 @@
 <template>
   <div class="AddTask">
-    <!--<div id="list">
-      <p id="MyList">My list</p>
-      <p id="NewList"><strong>New List</strong></p>
-      <ul>
-        <li v-for="data in this.$store.state.someArray" :key="data">
-          {{ data }}
-        </li>
-      </ul>
-      <AddTaskButton v-on:click="openOverlay"></AddTaskButton>
-    </div>-->
     <form id="overlay">
-      <input
-        placeholder="List name"
-        type="text"
-        name=""
-        id="ListTxt"
-        v-model="info"
-      />
-      <button @click="$store.commit('resetStorage')">Reset</button>
-
+      <input placeholder="List name" type="text" id="ListTxt" v-model="title" />
       <button
         v-on:click="openAddTask"
         class="addlistbutton"
-        @click="$store.commit('addString', info)"
+        @click="
+          $store.commit('addList', {
+            title: title,
+            theme: theme // Change to dynamic theme picker value
+          })
+        "
         id="save"
       >
         Add List
@@ -33,18 +20,11 @@
   </div>
 </template>
 <script>
-  //import AddTaskButton from "@/components/AddTaskButton.vue";
   export default {
-    components: {
-      //AddTaskButton,
-    },
-    name: 'AddList',
     data() {
       return {
-        data: null,
-        on: false,
-        info: '',
-        typed: ''
+        title: '',
+        theme: '#000'
       }
     },
     methods: {
@@ -76,7 +56,6 @@
     padding-right: 23px;
     color: #5db075;
   }
-
   #overlay {
     background-color: #ffff;
     position: fixed;

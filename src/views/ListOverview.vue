@@ -1,13 +1,12 @@
 <template>
   <div class="container">
     <div class="head">
-      <router-link to="/" id="back">Back</router-link>
       <h1>My Lists</h1>
     </div>
     <div id="defaultLists">
       <div>
         <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
-          :to="'/list/' + completed"
+          :to="'/list/completed'"
           id="completed"
           >Completed</router-link
         >
@@ -15,10 +14,11 @@
 
       <div>
         <img src="@/assets/Star-Icon.png" alt="" id="star" /><a
-          href="/important"
+          href="/list/important"
           id="important"
-          >Important</a
         >
+          Important
+        </a>
       </div>
     </div>
     <hr />
@@ -52,8 +52,7 @@
       return {
         taskOverlay: false
       }
-    },
-    methods: {}
+    }
   }
 </script>
 

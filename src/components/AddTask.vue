@@ -6,16 +6,9 @@
         type="text"
         name=""
         id="ListTxt"
-        v-model="info"
+        v-model="title"
       />
-      <button @click="$store.commit('resetStorage')">Reset</button>
-
-      <button
-        v-on:click="openAddTask"
-        class="addtaskbutton"
-        @click="$store.commit('addTask', info)"
-        id="save"
-      >
+      <button @click="addTask()" class="addtaskbutton" id="save">
         Add List
       </button>
       <p id="close" v-on:click="openAddTask">Cancel</p>
@@ -24,20 +17,27 @@
 </template>
 <script>
   export default {
-    components: {},
     name: 'AddTask',
     data() {
       return {
-        data: null,
-        on: false,
-        info: '',
-        typed: ''
+        title: ''
       }
     },
     methods: {
+      addTask() {
+        this.$store.commit('addTask', {
+          title: this.title,
+          listId: this.listId,
+          color: '#123' // Change to dynamic color picker value
+        })
+        this.openAddTask()
+      },
       openAddTask() {
         this.$emit('openAddTaskOverlay')
       }
+    },
+    props: {
+      listId: String
     }
   }
 </script>

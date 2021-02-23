@@ -17,13 +17,13 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    addList(state, payload /* theme, url */) {
+    addList(state, payload) {
       const uuid = String(uuidv4())
 
       Vue.set(state.listObjects, uuid, {
         title: payload.title,
         url: '/list/' + payload.title + '/' + uuid,
-        theme: '#000'
+        theme: payload.theme
       })
     },
 
