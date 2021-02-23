@@ -22,7 +22,7 @@ const routes = [
     component: CalendarView
   },
   {
-    path: '/list/:listName',
+    path: '/list/:listName/:listId',
     name: 'ListView',
     component: ListView
   },
@@ -45,6 +45,16 @@ const routes = [
     path: '/testarea/:listName/:listId',
     name: 'TestAreaList',
     component: TestArea
+  },
+  {
+    path: '/important',
+    name: 'Important',
+    component: ListView
+  },
+  {
+    path: '/completed',
+    name: 'Completed',
+    component: ListView
   }
 ]
 
