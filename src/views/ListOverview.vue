@@ -5,20 +5,15 @@
     </div>
     <div id="defaultLists">
       <div>
-        <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
-          :to="'/list/completed'"
-          id="completed"
-          >Completed</router-link
-        >
+        <img src="@/assets/Task-Completed-Icon.png" alt="" />
+        <router-link to="/completed" id="completed">Completed</router-link>
       </div>
 
       <div>
-        <img src="@/assets/Star-Icon.png" alt="" id="star" /><a
-          href="/list/important"
-          id="important"
-        >
+        <img src="@/assets/Star-Icon.png" alt="" id="star" />
+        <router-link to="/important" id="important">
           Important
-        </a>
+        </router-link>
       </div>
     </div>
     <hr />
