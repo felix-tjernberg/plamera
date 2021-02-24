@@ -59,22 +59,23 @@
   #overlay {
     background-color: #ffff;
     position: fixed;
-    width: 90vw;
-    height: 42vh;
-    margin-left: 0vw;
-    margin-top: -20vh;
+    width: 337.5px;
+    height: 341.033px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    transform: translate(-50%, -50%);
     border-radius: 3%;
-    box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 100px 2000px rgba(0, 0, 0, 0.5);
   }
   #ListTxt {
-    margin-top: 5vh;
-    width: 80vw;
+    margin-top: 30px;
+    width: 290px;
   }
 
   #save {
-    margin-top: 10vh;
-    width: 80vw;
-    height: 7vh;
+    width: 300px;
+    height: 60px;
   }
   #list {
     position: absolute;
