@@ -4,7 +4,7 @@
   <nav>
     <ul>
       <li>
-        <router-link v-slot="{ isActive }" to="/">
+        <router-link to="/">
           <NavbarIcon
             :color="isActive ? '#5DB075' : 'black'"
             name="task_overview"
@@ -14,7 +14,7 @@
       </li>
 
       <li>
-        <router-link v-slot="{ isActive }" to="/CalendarView">
+        <router-link to="/CalendarView">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="calendar">
           </NavbarIcon>
         </router-link>
@@ -23,7 +23,7 @@
       <!-- 
 
       <li>
-        <router-link v-slot="{ isActive }" to="/3">
+        <router-link  to="/3">
           <NavbarIcon
             :color="isActive ? '#5DB075' : 'black'"
             
@@ -36,7 +36,7 @@
  -->
 
       <li>
-        <router-link v-slot="{ isActive }" to="/settings">
+        <router-link to="/settings">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="settings">
           </NavbarIcon>
         </router-link>
