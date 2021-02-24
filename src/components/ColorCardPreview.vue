@@ -2,44 +2,24 @@
   <div>
     <div
       class="TaskCard"
-      v-for="(taskObject, taskObjectId, taskArrayNumber) in filteredTaskObjects"
-      :key="taskArrayNumber"
+      :style="'border-left-color:'+color" 
+      
     >
-      <button
-        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
-        @click="
-          $store.commit('emphasizeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-      <p class="TaskTitle">
-        {{ taskObject.title }}
-      </p>
-      <button
-        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
-        @click="
-          $store.commit('completeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
+     
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    computed: {
-      filteredTaskObjects() {
-        const filteredTaskObjects = Object.fromEntries(
-          Object.entries(this.$store.state.taskObjects).filter(
-            taskObject => taskObject[1].listId === this.$route.params.listId
-          )
-        )
-
-        return filteredTaskObjects
+      props:['color'],
+    data() {
+      return {
+        
       }
+    },
+    methods: {
+    
     }
   }
 </script>
