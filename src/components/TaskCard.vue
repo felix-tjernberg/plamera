@@ -17,7 +17,7 @@
       -->
     <div
       class="TaskCard"
-      :style="border"
+      :style="{ border: color }"
       v-for="data in this.$store.state.someString"
       :key="data"
     >
@@ -42,7 +42,8 @@
       return {
         taskTitle: 'planera sprintmöte',
         important: false,
-        completed: false
+        completed: false,
+        color: 'blue',
       }
     },
     methods: {
@@ -59,7 +60,7 @@
 
 <style scoped>
   .TaskCard {
-    border-left: 10px solid orange;
+    border-left: 10px solid;
     display: flex;
     height: 100px;
     border-radius: 8px;
