@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
+import { v4 as uuidv4, v4 } from 'uuid'
 
-Vue.use(Vuex)
+Vue.use(Vuex, v4, uuidv4)
 
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex',
@@ -11,22 +12,62 @@ const vuexLocalStorage = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    someArray: [],
-    someString: []
+    listObjects: {},
+    taskObjects: {},
+
+    color: ''
   },
+
   mutations: {
-    initArray(state) {
-      state.someArray = [1, 2, 3]
+    addList(state, payload) {
+      const uuid = String(uuidv4())
+
+      Vue.set(state.listObjects, uuid, {
+        title: payload.title,
+        url: '/list/' + payload.title + '/' + uuid,
+        theme: payload.theme
+      })
     },
-    addTask(state, string) {
-      state.someString.push(String(string))
+
+    addTask(state, payload) {
+      const uuid = String(uuidv4())
+
+      Vue.set(state.taskObjects, uuid, {
+        title: payload.title,
+        listId: payload.listId,
+        color: payload.color,
+        completed: false,
+        important: false
+        /*dueDate: payload.dueDate */
+        
+      })
+     
     },
-    addString(state, number) {
-      state.someArray.push(String(number))
+
+    completeTask(state, payload) {
+      state.taskObjects[payload.taskId].completed = !state.taskObjects[
+        payload.taskId
+      ].completed
     },
+
+    emphasizeTask(state, payload) {
+      state.taskObjects[payload.taskId].important = !state.taskObjects[
+        payload.taskId
+      ].important
+    },
+
+    removeTask(state, payload) {
+      Vue.delete(state.taskObjects, payload.taskId)
+    },
+
+    /*TODO  editTask, Maybe: changeDueDate, changeParentList */
+
+    //editTask   Object.assign(state.taskObject{taskId/uuid}, {title: payload.title, color, })
+    //state.taskObject{uuid} = {title, color, listId}
+
     resetStorage(state) {
-      state.someArray = []
-      state.someString = []
+      state.listObjects = {}
+      state.taskObjects = {}
     }
   },
   actions: {},

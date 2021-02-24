@@ -1,22 +1,20 @@
 <template>
-  <div class="AddTask">
+  <div class="Container">
     <form id="overlay">
       <input
         placeholder="List name"
         type="text"
         name=""
-        id="ListTxt"
-        v-model="info"
+        id="OverlayInput"
+        v-model="title"
       />
-      <button @click="$store.commit('resetStorage')">Reset</button>
+  
+      <h3>Pick a color</h3>
+      <div id="colorPicker">
+        <input type="color" v-model="color" />
+      </div>
 
-      <button
-        v-on:click="openAddTask"
-        class="signinbutton"
-        @click="$store.commit('addTask', info)"
-        style="margin-top: 30vh;"
-        id="save"
-      >
+      <button @click="addTask()" class="addtaskbutton" id="save">
         Add List
       </button>
       <p id="close" v-on:click="openAddTask">Cancel</p>
@@ -24,70 +22,83 @@
   </div>
 </template>
 <script>
+
   export default {
-    components: {},
     name: 'AddTask',
+
     data() {
       return {
-        data: null,
-        on: false,
-        info: '',
-        typed: ''
+        title: '',
+        color: ''
       }
     },
     methods: {
+      addTask() {
+        this.$store.commit('addTask', {
+          title: this.title,
+          listId: this.listId,
+          color: this.color // Change to dynamic color picker value
+        })
+        this.openAddTask()
+      },
       openAddTask() {
         this.$emit('openAddTaskOverlay')
-      }
+      },
+
+    },
+    props: {
+      listId: String
     }
   }
 </script>
 <style scoped>
-  #MyList {
-    text-align: left;
-    margin-top: -0.2vh;
-    font-weight: bold;
-    font-size: 24px;
-  }
-  #NewList {
-    background-image: url('~@/assets/Plus-Icon.png');
-    background-repeat: no-repeat;
-    background-position-x: 54vw;
-    background-position-y: 1.7vh;
-    padding: 14px;
-    height: 6vh;
-    background-size: 4vh;
-    text-align: center;
-    margin-top: -2vh;
-    font-size: 24px;
-    margin-left: -53vw;
-    padding-right: 23px;
-    color: #5db075;
-  }
-
   #overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #ffff;
     position: fixed;
     width: 90vw;
-    margin-left: 0vw;
-    margin-top: -20vh;
-    border-radius: 3%;
+    border-radius: 8px;
     box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
   }
-  #ListTxt {
+
+  input[type='color'] {
+    border: 0;
+    padding: 0;
+    width: 200%;
+    height: 200%;
+    cursor: pointer;
+    transform: translate(-25%, -25%);
+  }
+
+  #colorPicker {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid grey;
+
+  }
+
+  #OverlayInput {
     margin-top: 5vh;
-  }
-
-  #save {
-    margin-top: 40vh;
+    margin-bottom: 5vh;
     width: 80vw;
-    height: 7vh;
   }
-  #list {
-    position: absolute;
-    width: 98vw;
-    height: 60vh;
 
-    background-color: rgb(255, 255, 255);
+  .addtaskbutton {
+    width: 80vw;
+    margin: 8px 0;
+    background-color: #5db075;
+    padding: 16px 32px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
   }
 </style>

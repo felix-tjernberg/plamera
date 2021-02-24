@@ -1,30 +1,24 @@
 <template>
-  <div class="AddTask">
-    <!--<div id="list">
-      <p id="MyList">My list</p>
-      <p id="NewList"><strong>New List</strong></p>
-      <ul>
-        <li v-for="data in this.$store.state.someArray" :key="data">
-          {{ data }}
-        </li>
-      </ul>
-      <AddTaskButton v-on:click="openOverlay"></AddTaskButton>
-    </div>-->
+  <div class="Container">
     <form id="overlay">
       <input
         placeholder="List name"
         type="text"
-        name=""
-        id="ListTxt"
-        v-model="info"
+        id="overlayInput"
+        v-model="title"
       />
-      <button @click="$store.commit('resetStorage')">Reset</button>
+      <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
+      <ThemePicker :themes="themes" @setTheme="setTheme"> </ThemePicker>
 
       <button
         v-on:click="openAddTask"
-        class="signinbutton"
-        @click="$store.commit('addString', info)"
-        style="margin-top: 30vh;"
+        class="addListButton"
+        @click="
+          $store.commit('addList', {
+            title: title,
+            theme: theme // Change to dynamic theme picker value
+          })
+        "
         id="save"
       >
         Add List
@@ -34,74 +28,69 @@
   </div>
 </template>
 <script>
-  //import AddTaskButton from "@/components/AddTaskButton.vue";
+
+  import ThemePicker from '@/components/ThemePicker.vue'
+  import PreviewTheme from '@/components/PreviewTheme.vue'
+
   export default {
     components: {
-      //AddTaskButton,
+      ThemePicker,
+      PreviewTheme
     },
-    name: 'AddList',
+
     data() {
       return {
-        data: null,
-        on: false,
-        info: '',
-        typed: ''
+        title: '',
+        theme: '#e8e8e8',
+        themes: [
+          `url(${require('@/assets/monstera.jpg')})`,
+          `url(${require('@/assets/code1.jpg')})`,
+          'linear-gradient(249.63deg, #992DFF 22.39%, #0CDCEA 120.67%);',
+          'linear-gradient(213.5deg, #FF7800 3.1%, #FFC700 69.07%);',
+          'linear-gradient(224.12deg, #4AB17C 26.4%, #87FA8B 89.94%);'
+        ]
       }
     },
     methods: {
       openAddTask() {
         this.$emit('openAddTaskOverlay')
+      },
+      setTheme(theme) {
+        this.theme = theme
+        console.log('setting theme to' + theme)
       }
     }
   }
 </script>
 <style scoped>
-  #MyList {
-    text-align: left;
-    margin-top: -0.2vh;
-    font-weight: bold;
-    font-size: 24px;
-  }
-  #NewList {
-    background-image: url('~@/assets/Plus-Icon.png');
-    background-repeat: no-repeat;
-    background-position-x: 54vw;
-    background-position-y: 1.7vh;
-    padding: 14px;
-    height: 6vh;
-    background-size: 4vh;
-    text-align: center;
-    margin-top: -2vh;
-    font-size: 24px;
-    margin-left: -53vw;
-    padding-right: 23px;
-    color: #5db075;
-  }
-
   #overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #ffff;
     position: fixed;
     width: 90vw;
-    height: 60vh;
-    margin-left: 0vw;
-    margin-top: -20vh;
-    border-radius: 3%;
+    border-radius: 8px;
     box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
   }
-  #ListTxt {
+
+  #overlayInput {
     margin-top: 5vh;
-  }
-
-  #save {
-    margin-top: 40vh;
+    margin-bottom: 5vh;
     width: 80vw;
-    height: 7vh;
   }
-  #list {
-    position: absolute;
-    width: 98vw;
-    height: 60vh;
 
-    background-color: rgb(255, 255, 255);
+  .addListButton {
+    width: 80vw;
+    margin: 8px 0;
+    background-color: #5db075;
+    padding: 16px 32px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
   }
 </style>

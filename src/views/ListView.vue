@@ -6,11 +6,11 @@
       id="TaskOverlay"
       v-if="taskOverlay"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+      :listId="this.$route.params.listId"
     ></AddTask>
     <p class="tasksp" v-if="this.$store.state.someString < [0]">
       No Tasks added yet
     </p>
-
     <TaskCard></TaskCard>
     <AddTaskButton
       id="Button"
@@ -29,13 +29,13 @@
       AddTask,
       TaskCard
     },
+    data: function() {
+      return { taskOverlay: false }
+    },
     methods: {
       goToListOverview() {
         this.$router.push('/')
       }
-    },
-    data: function() {
-      return { taskOverlay: false }
     }
   }
 </script>

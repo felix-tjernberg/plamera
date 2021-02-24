@@ -1,36 +1,29 @@
 <template>
   <div>
-    <!-- 
-          #5D5FEF  - Purple
-          #F2994A  - Orange
-          #6FCF97  - Green
-          #F178B6  - Pink
-
-
-
-          <span class="rating" v-if="result.vote_average >= 7" style="color: #2B7D7D">Rating: {{
-            result.vote_average
-          }}</span>
-          <span class="rating" v-else style="color:2B607D">Rating: {{ result.vote_average }}</span>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-      -->
     <div
       class="TaskCard"
-      :style="{ border: color }"
-      v-for="data in this.$store.state.someString"
-      :key="data"
+      v-for="(taskObject, taskObjectId, taskArrayNumber) in filteredTaskObjects"
+      :key="taskArrayNumber"
+      v-bind:style="{ borderLeftColor: taskObject.color }"
     >
       <button
-        :class="important ? 'filledStar' : 'emptyStar'"
-        @click="addToImportant"
+        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+        @click="
+          $store.commit('emphasizeTask', {
+            taskId: taskObjectId
+          })
+        "
       ></button>
       <p class="TaskTitle">
-        {{ data }}
+        {{ taskObject.title }}
       </p>
       <button
-        :class="completed ? 'filledCircle' : 'emptyCircle'"
-        @click="addToCompleted"
+        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+        @click="
+          $store.commit('completeTask', {
+            taskId: taskObjectId
+          })
+        "
       ></button>
     </div>
   </div>
@@ -40,19 +33,19 @@
   export default {
     data() {
       return {
-        taskTitle: 'planera sprintmöte',
-        important: false,
-        completed: false,
-        color: 'blue',
+        color: ''
       }
     },
-    methods: {
-      addToImportant() {
-        this.important = !this.important
-        //commit id + boolean
-      },
-      addToCompleted() {
-        this.completed = !this.completed
+
+    computed: {
+      filteredTaskObjects() {
+        const filteredTaskObjects = Object.fromEntries(
+          Object.entries(this.$store.state.taskObjects).filter(
+            taskObject => taskObject[1].listId === this.$route.params.listId
+          )
+        )
+
+        return filteredTaskObjects
       }
     }
   }
@@ -60,7 +53,9 @@
 
 <style scoped>
   .TaskCard {
-    border-left: 10px solid;
+    border-left-color: rgb(255, 165, 0);
+    border-left-style: solid;
+    border-left-width: 10px;
     display: flex;
     height: 100px;
     border-radius: 8px;

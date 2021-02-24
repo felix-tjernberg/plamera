@@ -7,6 +7,7 @@ import ListView from '../views/ListView'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import TestArea from '../views/TestArea.vue'
+import settings from '../views/settings.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,7 +22,7 @@ const routes = [
     component: CalendarView
   },
   {
-    path: '/list/:listName',
+    path: '/list/:listName/:listId',
     name: 'ListView',
     component: ListView
   },
@@ -39,6 +40,26 @@ const routes = [
     path: '/testarea',
     name: 'TestArea',
     component: TestArea
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: settings
+  },
+  {
+    path: '/testarea/:listName/:listId',
+    name: 'TestAreaList',
+    component: TestArea
+  },
+  {
+    path: '/important',
+    name: 'Important',
+    component: ListView
+  },
+  {
+    path: '/completed',
+    name: 'Completed',
+    component: ListView
   }
 ]
 
