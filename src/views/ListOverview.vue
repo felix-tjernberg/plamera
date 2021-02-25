@@ -6,19 +6,36 @@
     </div>
     <div id="defaultLists">
       <div>
-        <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
-          :to="'/list/' + completed"
-          id="completed"
+        <router-link id="ML2" to="/">My List</router-link>
+      </div>
+      <div>
+        <img
+          class="MobileIcons"
+          src="@/assets/Task-Completed-Icon.png"
+          alt=""
+        /><router-link :to="'/list/' + completed" id="completed"
           >Completed</router-link
-        >
+        ><img
+          class="DesktopIcons"
+          src="@/assets/Task-Completed-Icon.png"
+          alt=""
+        />
       </div>
 
       <div>
-        <img src="@/assets/Star-Icon.png" alt="" id="star" /><a
-          href="/important"
-          id="important"
-          >Important</a
-        >
+        <img
+          class="MobileIcons"
+          src="@/assets/Star-Icon.png"
+          alt=""
+          id="star"
+        /><router-link :to="'/list/' + important" id="important"
+          >Important</router-link
+        ><img
+          class="DesktopIcons"
+          src="@/assets/Star-Icon.png"
+          alt=""
+          id="star"
+        />
       </div>
     </div>
     <hr />
@@ -68,7 +85,6 @@
     margin-bottom: 15px;
   }
   h1 {
-    
     height: 36px;
     left: 16px;
     right: 16px;
@@ -120,7 +136,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 10vh;
+    margin-top: 70px;
   }
   #star {
     width: 25px;
@@ -129,11 +145,26 @@
   #ML {
     display: none;
   }
+  #ML2 {
+    display: none;
+  }
+  .DesktopIcons {
+    display: none;
+  }
   /* Desktop */
   @media only screen and (min-device-width: 1000px) {
     hr {
       border: 1px solid #e8e8e8;
       margin-bottom: 15px;
+    }
+    .DesktopIcons {
+      display: block;
+      margin-left: 100px;
+      position: absolute;
+      margin-right: 50px;
+      margin-left: 110px;
+      margin-bottom: 70px;
+      margin-top: -21px;
     }
     #ML {
       display: block;
@@ -142,6 +173,15 @@
       margin-top: 8vh;
       font-weight: 600;
       font-size: 20px;
+    }
+    #ML2 {
+      display: block;
+      margin-right: 10px;
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+      font-style: normal;
+      text-decoration: none;
     }
     h1 {
       height: 36px;
@@ -196,11 +236,25 @@
       display: flex;
       flex-direction: row;
       align-items: flex-start;
-      margin-top: 10vh;
+      margin-top: 100px;
+      grid-gap: 20px;
+      margin-bottom: 0px;
     }
     #star {
       width: 25px;
       height: 25px;
+    }
+    .MobileIcons {
+      display: none;
+    }
+    #important {
+      font-weight: 600;
+    }
+    #completed {
+      font-weight: 600;
+    }
+    #defaultLists a.router-link-exact-active {
+      color: #42b983;
     }
   }
 
