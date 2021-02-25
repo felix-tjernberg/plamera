@@ -40,6 +40,7 @@
     </div>
     <hr />
     <p id="ML">My Lists</p>
+    <!--MOBILE VERSION-->
     <div class="listContainer">
       <AddList
         v-if="taskOverlay"
@@ -52,6 +53,14 @@
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
       ></AddTaskButton>
     </div>
+    <!--MOBILE VERSION-->
+    <!--------------------------------------->
+    <!--DESKTOP VERSION-->
+    <div class="DesktoplistContainer">
+      <DesktopAddTask v-on:openAddTaskOverlay="taskOverlay = !taskOverlay" />
+      <ListCard></ListCard>
+    </div>
+    <!--DESKTOP VERSION-->
   </div>
 </template>
 
@@ -59,11 +68,13 @@
   import ListCard from '@/components/ListCard.vue'
   import AddTaskButton from '@/components/AddTaskButton.vue'
   import AddList from '@/components/AddList.vue'
+  import DesktopAddTask from '@/components/DesktopAddTask.vue'
   export default {
     components: {
       AddTaskButton,
       AddList,
-      ListCard
+      ListCard,
+      DesktopAddTask
     },
     data: function() {
       return {
@@ -75,6 +86,9 @@
 </script>
 
 <style>
+  .DesktoplistContainer {
+    display: none;
+  }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -255,6 +269,12 @@
     }
     #defaultLists a.router-link-exact-active {
       color: #42b983;
+    }
+    .listContainer {
+      display: none;
+    }
+    .DesktoplistContainer {
+      display: block;
     }
   }
 
