@@ -57,12 +57,15 @@
       filteredTaskObjects() {
         const filteredTaskObjects = Object.fromEntries(
           Object.entries(this.$store.state.taskObjects).filter(
-            taskObject => taskObject[1].listId === this.$route.params.listId
+            taskObject => taskObject[1].listId === this.listId
           )
         )
 
         return filteredTaskObjects
       }
+    },
+    props: {
+      listId: String
     }
   }
 </script>

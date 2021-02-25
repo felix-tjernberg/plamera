@@ -11,7 +11,7 @@
     <p class="tasksp" v-if="this.$store.state.someString < [0]">
       No Tasks added yet
     </p>
-    <TaskCard></TaskCard>
+    <TaskCard :listId="this.$route.params.listId"></TaskCard>
     <AddTaskButton
       id="Button"
       v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
