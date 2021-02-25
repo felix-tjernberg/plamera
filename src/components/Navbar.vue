@@ -55,7 +55,7 @@
 
     data() {
       return {
-        // isActive: false,
+        isActive: false
       }
     },
 

@@ -13,9 +13,7 @@ const vuexLocalStorage = new VuexPersist({
 export default new Vuex.Store({
   state: {
     listObjects: {},
-    taskObjects: {},
-
-    color: ''
+    taskObjects: {}
   },
 
   mutations: {
@@ -37,9 +35,7 @@ export default new Vuex.Store({
         completed: false,
         important: false
         /*dueDate: payload.dueDate */
-        
       })
-     
     },
 
     completeTask(state, payload) {

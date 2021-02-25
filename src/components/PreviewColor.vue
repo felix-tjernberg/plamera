@@ -2,60 +2,31 @@
   <div>
     <div
       class="TaskCard"
-      v-for="(taskObject, taskObjectId, taskArrayNumber) in filteredTaskObjects"
-      :key="taskArrayNumber"
-      v-bind:style="{ borderLeftColor: taskObject.color }"
+      :style="'border-left-color:'+color" 
+      
     >
-      <button
-        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
-        @click="
-          $store.commit('emphasizeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-      <p class="TaskTitle">
-        {{ taskObject.title }}
-      </p>
-      <button
-        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
-        @click="
-          $store.commit('completeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
+     
     </div>
   </div>
 </template>
 
 <script>
   export default {
+      props:['color','title'],
     data() {
       return {
-        color: ''
+        
       }
     },
-
-    computed: {
-      filteredTaskObjects() {
-        const filteredTaskObjects = Object.fromEntries(
-          Object.entries(this.$store.state.taskObjects).filter(
-            taskObject => taskObject[1].listId === this.$route.params.listId
-          )
-        )
-
-        return filteredTaskObjects
-      }
+    methods: {
+    
     }
   }
 </script>
 
 <style scoped>
   .TaskCard {
-    border-left-color: rgb(255, 165, 0);
-    border-left-style: solid;
-    border-left-width: 10px;
+    border-left: 10px solid orange;
     display: flex;
     height: 100px;
     border-radius: 8px;
@@ -86,6 +57,7 @@
   .TaskTitle {
     color: black;
     font-weight: 300;
+
     align-self: center;
     margin: auto;
   }

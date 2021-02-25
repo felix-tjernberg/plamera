@@ -8,7 +8,7 @@
         id="OverlayInput"
         v-model="title"
       />
-
+      <PreviewColor :title="title" :color="color" />
       <h3>Pick a color</h3>
       <div id="colorPicker">
         <input type="color" v-model="color" />
@@ -22,9 +22,12 @@
   </div>
 </template>
 <script>
+  import PreviewColor from '@/components/PreviewColor.vue'
   export default {
     name: 'AddTask',
-
+    components: {
+      PreviewColor
+    },
     data() {
       return {
         title: '',

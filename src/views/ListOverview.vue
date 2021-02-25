@@ -7,7 +7,7 @@
     <div id="defaultLists">
       <div>
         <img src="@/assets/Task-Completed-Icon.png" alt="" /><router-link
-          :to="'/list/' + completed"
+          :to="'/completed'"
           id="completed"
           >Completed</router-link
         >
@@ -80,7 +80,6 @@
     line-height: 36px;
   }
 
-
   textarea:focus,
   input:focus {
     outline: none;
@@ -127,8 +126,6 @@
     width: 25px;
     height: 25px;
   }
- 
-  
 
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
   /* Portrait and Landscape */
