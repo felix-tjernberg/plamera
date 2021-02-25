@@ -5,7 +5,7 @@
       <!-- <p style="font-size: 8px">
         Raw json: {{ this.$store.state.taskObjects }}
       </p> -->
-      <ul>
+      <!--<ul>
         <li
           v-for="(taskObject, taskObjectId, taskArrayNumber) in this.$store
             .state.taskObjects"
@@ -57,16 +57,80 @@
             Edit {{ taskObject.title }}
           </button>
         </li>
-      </ul>
+      </ul>-->
     </section>
     <ol>
+      <h3>imporntant</h3>
       <li
-        v-for="(taskObject, taskObjectId, arrayNumber) in filteredTaskObjects"
-        :key="arrayNumber"
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.important"
+        :key="taskObjectId"
       >
-        <p>Task title: {{ taskObject.title }}</p>
-        <p style="font-size: 9px">List id: {{ taskObject.listId }}</p>
-        <p style="font-size: 9px">Task id: {{ taskObjectId }}</p>
+        <p>
+          {{ taskObject.title }} / c: {{ taskObject.completed }} i:
+          {{ taskObject.important }}
+        </p>
+        <!-- <p style="font-size: 9px">List id: {{ taskObject.listId }}</p> -->
+        <!-- <p style="font-size: 9px">Task id: {{ taskObjectId }}</p> -->
+        <button
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          complete {{ taskObject.title }}
+        </button>
+        <button
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          imoprtant {{ taskObject.title }}
+        </button>
+      </li>
+      <h3>all</h3>
+      <li
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.rest"
+        :key="taskObjectId"
+      >
+        <p>
+          {{ taskObject.title }} / c: {{ taskObject.completed }} i:
+          {{ taskObject.important }}
+        </p>
+        <!-- <p style="font-size: 9px">List id: {{ taskObject.listId }}</p> -->
+        <!-- <p style="font-size: 9px">Task id: {{ taskObjectId }}</p> -->
+        <button
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          complete {{ taskObject.title }}
+        </button>
+        <button
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        >
+          imoprtant {{ taskObject.title }}
+        </button>
+      </li>
+      <h3>completed</h3>
+      <li
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.completed"
+        :key="taskObjectId"
+      >
+        <p>
+          {{ taskObject.title }} / c: {{ taskObject.completed }} i:
+          {{ taskObject.important }}
+        </p>
+        <!-- <p style="font-size: 9px">List id: {{ taskObject.listId }}</p> -->
+        <!-- <p style="font-size: 9px">Task id: {{ taskObjectId }}</p> -->
         <button
           @click="
             $store.commit('completeTask', {
@@ -95,19 +159,37 @@
   export default {
     computed: {
       filteredTaskObjects() {
-        // const taskObjectsEntries = Object.entries(this.$store.state.taskObjects)
-        // const filteredTaskObjectsArray = taskObjectsEntries.filter(
-        //   taskObject => taskObject[1].important === true
-        // )
-        // const filteredTaskObjects = Object.fromEntries(filteredTaskObjectsArray)
-
-        const filteredTaskObjects = Object.fromEntries(
+        const filterTaskObjectsByListId = Object.fromEntries(
           Object.entries(this.$store.state.taskObjects).filter(
-            taskObject => taskObject[1].important === true
+            taskObject => taskObject[1].listId === this.listId
+          )
+        )
+        const filterTaskObjectsByImportant = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject =>
+              taskObject[1].important === true &&
+              taskObject[1].completed === false
+          )
+        )
+        const filterTaskObjectsByCompleted = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject => taskObject[1].completed === true
+          )
+        )
+        const filterTaskObjectsByFalse = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject =>
+              taskObject[1].important === false &&
+              taskObject[1].completed === false
           )
         )
 
-        return filteredTaskObjects
+        return {
+          all: filterTaskObjectsByListId,
+          important: filterTaskObjectsByImportant,
+          completed: filterTaskObjectsByCompleted,
+          rest: filterTaskObjectsByFalse
+        }
       }
     },
     data() {
