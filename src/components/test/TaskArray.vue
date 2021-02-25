@@ -45,6 +45,17 @@
           >
             Remove {{ taskObject.title }}
           </button>
+          <button
+            @click="
+              $store.commit('editTask', {
+                taskId: taskObjectId,
+                title: 'IwasChanged',
+                color: '#FFF'
+              })
+            "
+          >
+            Edit {{ taskObject.title }}
+          </button>
         </li>
       </ul>
     </section>
@@ -54,11 +65,8 @@
         :key="arrayNumber"
       >
         <p>Task title: {{ taskObject.title }}</p>
-        <!-- <p>Task title: {{ taskObject[1].title }}</p> -->
         <p style="font-size: 9px">List id: {{ taskObject.listId }}</p>
-        <!-- <p style="font-size: 9px">List id: {{ taskObject[1].listId }}</p> -->
         <p style="font-size: 9px">Task id: {{ taskObjectId }}</p>
-        <!-- <p style="font-size: 9px">Task id: {{ taskObject[0] }}</p> -->
         <button
           @click="
             $store.commit('completeTask', {

@@ -21,7 +21,6 @@ export default new Vuex.Store({
   mutations: {
     addList(state, payload) {
       const uuid = String(uuidv4())
-
       Vue.set(state.listObjects, uuid, {
         title: payload.title,
         url: '/list/' + payload.title + '/' + uuid,
@@ -31,7 +30,6 @@ export default new Vuex.Store({
 
     addTask(state, payload) {
       const uuid = String(uuidv4())
-
       Vue.set(state.taskObjects, uuid, {
         title: payload.title,
         listId: payload.listId,
@@ -56,14 +54,39 @@ export default new Vuex.Store({
       ].important
     },
 
+    editList(state, payload) {
+      Object.assign(state.listObjects[payload.listId], {
+        title: payload.title,
+        theme: payload.theme
+      })
+    },
+
+    editTask(state, payload) {
+      Object.assign(state.taskObjects[payload.taskId], {
+        title: payload.title,
+        color: payload.color
+      })
+    },
+
     removeTask(state, payload) {
       Vue.delete(state.taskObjects, payload.taskId)
     },
 
-    /*TODO  editTask, Maybe: changeDueDate, changeParentList */
+    removeList(state, payload) {
+      Vue.delete(state.listObjects, payload.listId)
+      const filteredTaskObjects = Object.entries(state.taskObjects).filter(
+        taskObject => taskObject[1].listId === payload.listId
+      )
+      for (
+        let iteration = 0;
+        iteration < filteredTaskObjects.length;
+        iteration++
+      ) {
+        Vue.delete(state.taskObjects, filteredTaskObjects[iteration][0])
+      }
+    },
 
-    //editTask   Object.assign(state.taskObject{taskId/uuid}, {title: payload.title, color, })
-    //state.taskObject{uuid} = {title, color, listId}
+    /* Maybe: changeDueDate, changeParentList */
 
     resetStorage(state) {
       state.listObjects = {}
