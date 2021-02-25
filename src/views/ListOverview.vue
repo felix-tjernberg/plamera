@@ -26,6 +26,7 @@
       <AddList
         v-if="taskOverlay"
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+        id="addListOverlay"
       ></AddList>
       <ListCard></ListCard>
 
@@ -67,7 +68,6 @@
     margin-bottom: 15px;
   }
   h1 {
-    
     height: 36px;
     left: 16px;
     right: 16px;
@@ -78,6 +78,7 @@
     font-size: 30px;
     line-height: 36px;
   }
+
 
   textarea:focus,
   input:focus {
@@ -125,6 +126,8 @@
     width: 25px;
     height: 25px;
   }
+ 
+  
 
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
   /* Portrait and Landscape */
