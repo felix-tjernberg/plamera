@@ -22,6 +22,7 @@
       </div>
     </div>
     <hr />
+    <p id="ML">My Lists</p>
     <div class="listContainer">
       <AddList
         v-if="taskOverlay"
@@ -124,6 +125,83 @@
   #star {
     width: 25px;
     height: 25px;
+  }
+  #ML {
+    display: none;
+  }
+  /* Desktop */
+  @media only screen and (min-device-width: 1000px) {
+    hr {
+      border: 1px solid #e8e8e8;
+      margin-bottom: 15px;
+    }
+    #ML {
+      display: block;
+      color: black;
+      margin-left: -90vw;
+      margin-top: 8vh;
+      font-weight: 600;
+      font-size: 20px;
+    }
+    h1 {
+      height: 36px;
+      left: 16px;
+      right: 16px;
+      top: 78px;
+      margin-bottom: 0px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 36px;
+      float: left;
+    }
+
+    textarea:focus,
+    input:focus {
+      outline: none;
+    }
+    #Button {
+      bottom: 80px;
+      right: 30px;
+      position: fixed;
+    }
+
+    #back {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      position: absolute;
+      margin-left: -25vh;
+      margin-top: -2vh;
+      font-size: 22px;
+    }
+
+    #completed {
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+      font-style: normal;
+      text-decoration: none;
+      padding: 20px;
+    }
+    #important {
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+      font-style: normal;
+      text-decoration: none;
+      padding: 20px;
+    }
+    #defaultLists {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-top: 10vh;
+    }
+    #star {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
