@@ -8,7 +8,7 @@
         id="OverlayInput"
         v-model="title"
       />
-  
+
       <h3>Pick a color</h3>
       <div id="colorPicker">
         <input type="color" v-model="color" />
@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-
   export default {
     name: 'AddTask',
 
@@ -43,8 +42,7 @@
       },
       openAddTask() {
         this.$emit('openAddTaskOverlay')
-      },
-
+      }
     },
     props: {
       listId: String
@@ -58,9 +56,14 @@
     align-items: center;
     background-color: #ffff;
     position: fixed;
-    width: 90vw;
-    border-radius: 8px;
-    box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
+    width: 380px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    box-shadow: 0px 0px 100px 2000px rgba(0, 0, 0, 0.5);
   }
 
   input[type='color'] {
@@ -79,17 +82,16 @@
     border-radius: 50px;
     overflow: hidden;
     border: 2px solid grey;
-
   }
 
   #OverlayInput {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    width: 80vw;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    width: 343px;
   }
 
   .addtaskbutton {
-    width: 80vw;
+    width: 350px;
     margin: 8px 0;
     background-color: #5db075;
     padding: 16px 32px;

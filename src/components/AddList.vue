@@ -8,7 +8,8 @@
         v-model="title"
       />
       <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
-      <ThemePicker :themes="themes" @setTheme="setTheme"> </ThemePicker>
+      <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
+      </ThemePicker>
 
       <button
         v-on:click="openAddTask"
@@ -28,7 +29,6 @@
   </div>
 </template>
 <script>
-
   import ThemePicker from '@/components/ThemePicker.vue'
   import PreviewTheme from '@/components/PreviewTheme.vue'
 
@@ -69,19 +69,24 @@
     align-items: center;
     background-color: #ffff;
     position: fixed;
-    width: 90vw;
-    border-radius: 8px;
-    box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.5);
+    width: 380px;
+    height: 450px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    box-shadow: 0px 0px 100px 2000px rgba(0, 0, 0, 0.5);
   }
 
   #overlayInput {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    width: 80vw;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    width: 343px;
   }
 
   .addListButton {
-    width: 80vw;
+    width: 350px;
     margin: 8px 0;
     background-color: #5db075;
     padding: 16px 32px;
@@ -92,5 +97,9 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
+  }
+  .Selection {
+    margin-top: 40px;
+    margin-right: 135px;
   }
 </style>
