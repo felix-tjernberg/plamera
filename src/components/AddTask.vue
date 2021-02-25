@@ -31,7 +31,7 @@ import PreviewColor from '@/components/PreviewColor.vue'
     data() {
       return {
         title: '',
-        color: ''
+        color: '#ffa500'
       }
     },
     methods: {

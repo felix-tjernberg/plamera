@@ -34,7 +34,7 @@
     data() {
       return {
         title: '',
-        color: ''
+        color: '#ffa500'
       }
     },
     methods: {
