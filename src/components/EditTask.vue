@@ -7,11 +7,13 @@
       id="OverlayInput"
       v-model="title"
     />
-    <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
-    <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
-    </ThemePicker>
+    <PreviewColor :title="title" :color="color" />
+    <h3>Pick a color</h3>
+    <div id="colorPicker">
+      <input type="color" v-model="color" />
+    </div>
 
-    <button id="EditListbutton" @click="editList">
+    <button id="EditListbutton" @click="editTask">
       Edit
     </button>
 
@@ -22,49 +24,37 @@
 </template>
 
 <script>
-  import ThemePicker from '@/components/ThemePicker.vue'
-  import PreviewTheme from '@/components/PreviewTheme.vue'
+  import PreviewColor from '@/components/PreviewColor.vue'
 
   export default {
-    props: ['listId'],
+    props: ['taskId'],
     components: {
-      ThemePicker,
-      PreviewTheme
+      PreviewColor
     },
     data() {
       return {
         title: '',
-        theme: '',
-        themes: [
-          `url(${require('@/assets/monstera.jpg')})`,
-          `url(${require('@/assets/code1.jpg')})`,
-          'linear-gradient(249.63deg, #992DFF 22.39%, #0CDCEA 120.67%);',
-          'linear-gradient(213.5deg, #FF7800 3.1%, #FFC700 69.07%);',
-          'linear-gradient(224.12deg, #4AB17C 26.4%, #87FA8B 89.94%);'
-        ]
+        color: ''
       }
     },
     methods: {
       closeOverlay() {
         this.$emit('closeOverlay')
       },
-      setTheme(theme) {
-        this.theme = theme
-        console.log('setting theme to' + theme)
-      },
-      editList() {
-        this.$store.commit('editList', {
-          listId: this.listId,
+
+      editTask() {
+        this.$store.commit('editTask', {
+          taskId: this.taskId,
           title: this.title,
-          theme: this.theme
+          color: this.color
         })
         this.closeOverlay()
       }
     },
 
     created() {
-      this.theme = this.$store.state.listObjects[this.listId].theme
-      this.title = this.$store.state.listObjects[this.listId].title
+      this.color = this.$store.state.taskObjects[this.taskId].color
+      this.title = this.$store.state.taskObjects[this.taskId].title
     }
   }
 </script>
@@ -77,7 +67,7 @@
     background-color: #ffff;
     position: fixed;
     width: 380px;
-    height: 450px;
+    height: 525px;
     top: 50%;
     left: 50%;
     margin-top: -50px;
@@ -103,5 +93,23 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  input[type='color'] {
+    border: 0;
+    padding: 0;
+    width: 200%;
+    height: 200%;
+    cursor: pointer;
+    transform: translate(-25%, -25%);
+  }
+
+  #colorPicker {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid grey;
   }
 </style>

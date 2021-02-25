@@ -1,84 +1,43 @@
 <template>
-  <div>
-    <div
+  <div class="preview-container">
+    <input
       class="TaskCard"
-      :style="'border-left-color:'+color" 
-      
-    >
-     
-    </div>
+      :style="'border-left-color:' + color"
+      type="button"
+      :value="title"
+    />
   </div>
 </template>
 
 <script>
   export default {
-      props:['color','title'],
+    props: ['color', 'title'],
     data() {
-      return {
-        
-      }
+      return {}
     },
-    methods: {
-    
-    }
+    methods: {}
   }
 </script>
 
 <style scoped>
+  .preview-container {
+    width: 80%;
+    border: none;
+  }
   .TaskCard {
+    border: 1px solid #e8e8e8;
     border-left: 10px solid orange;
-    display: flex;
+    width: 100%;
     height: 100px;
     border-radius: 8px;
     background-color: #f0f0f0;
     margin-bottom: 15px;
   }
 
-  .emptyStar {
-    align-self: center;
-    margin-left: 12px;
-    background: none;
-    border: none;
-    height: 25px;
-    width: 25px;
-    background-image: Url('~@/assets/Star.svg');
-  }
-
-  .filledStar {
-    align-self: center;
-    margin-left: 12px;
-    background: none;
-    border: none;
-    height: 25px;
-    width: 25px;
-    background-image: Url('~@/assets/filledStar.svg');
-  }
-
   .TaskTitle {
     color: black;
     font-weight: 300;
-
     align-self: center;
     margin: auto;
-  }
-
-  .emptyCircle {
-    align-self: center;
-    margin-right: 12px;
-    background: none;
-    border: none;
-    height: 26px;
-    width: 26px;
-    background-image: Url('~@/assets/Circle.svg');
-  }
-
-  .filledCircle {
-    align-self: center;
-    margin-right: 12px;
-    background: none;
-    border: none;
-    height: 26px;
-    width: 26px;
-    background-image: Url('~@/assets/filledCircle.svg');
   }
 </style>

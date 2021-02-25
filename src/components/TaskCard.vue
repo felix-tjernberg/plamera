@@ -1,5 +1,10 @@
 <template>
   <div>
+    <EditTask
+      :taskId="EditTaskId"
+      v-if="Overlay"
+      v-on:closeOverlay="Overlay = !Overlay"
+    />
     <div
       class="TaskCard"
       v-for="(taskObject, taskObjectId, taskArrayNumber) in filteredTaskObjects"
@@ -14,7 +19,7 @@
           })
         "
       ></button>
-      <p class="TaskTitle">
+      <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
         {{ taskObject.title }}
       </p>
       <button
@@ -30,13 +35,24 @@
 </template>
 
 <script>
+  import EditTask from '@/components/EditTask'
   export default {
+    components: {
+      EditTask
+    },
     data() {
       return {
+        Overlay: false,
+        EditTaskId: '',
         color: ''
       }
     },
-
+    methods: {
+      OpenEditOverlay(taskId) {
+        this.Overlay = !this.Overlay
+        this.EditTaskId = taskId
+      }
+    },
     computed: {
       filteredTaskObjects() {
         const filteredTaskObjects = Object.fromEntries(
