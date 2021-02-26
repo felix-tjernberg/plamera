@@ -120,6 +120,7 @@
   .desktop-list-card-container h2 {
     color: white;
   }
+  /* Had to throw important on cover, as "repeat scroll 0% 0%" gets applied in style attribute (I suspect it's webpack applying that statement) */
   .desktop-list-card {
     background-size: cover !important;
     border-radius: var(--border-radius-base);
