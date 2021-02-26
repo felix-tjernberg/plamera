@@ -59,41 +59,6 @@
         </div>
       </div>
     </div>
-    <!--MOBILE-->
-    <div class="Mobile">
-      <router-link
-        class="ListCard"
-        v-on:goToList="listname"
-        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
-          .listObjects"
-        :key="listArrayNumber"
-        :to="listObject.url"
-        :style="'background:' + listObject.theme"
-      >
-        {{ listObject.title }}
-      </router-link>
-    </div>
-    <!--MOBILE-->
-    <!--DESKTOP-->
-    <div class="Desktop">
-      <div
-        class="ListCardDesktop"
-        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
-          .listObjects"
-        :key="listArrayNumber"
-        :to="listObject.url"
-        :style="'background:' + listObject.theme"
-      >
-        <p id="ObjectTxt">{{ listObject.title }}</p>
-        <TaskCard></TaskCard>
-        <AddTask
-          v-if="taskOverlay"
-          v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
-        />
-        <AddTaskButton v-on:openAddTaskOverlay="taskOverlay = !taskOverlay" />
-      </div>
-    </div>
-    <!--DESKTOP-->
   </div>
 </template>
 
@@ -185,6 +150,9 @@
     margin-left: 10px;
     background-image: Url('~@/assets/Edit.svg');
   }
+  #DesktopButton {
+    display: none;
+  }
 
   .testp {
     justify-self: center;
@@ -194,6 +162,7 @@
   }
   @media only screen and (min-device-width: 1000px) {
     #DesktopButton {
+      display: block;
       border-radius: 30px;
       background-color: #5db075;
       border: none;
