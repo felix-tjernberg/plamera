@@ -1,5 +1,5 @@
 <template>
-  <div class="Container">
+  <div>
     <form id="overlay">
       <input
         placeholder="Task name"
@@ -13,11 +13,10 @@
       <div id="colorPicker">
         <input type="color" v-model="color" />
       </div>
-
       <button @click="addTask()" class="addtaskbutton" id="save">
-        Add List
+        Add Task
       </button>
-      <p id="close" v-on:click="openAddTask">Cancel</p>
+      <p id="close" @click="closeOverlay">Cancel</p>
     </form>
   </div>
 </template>
@@ -41,10 +40,10 @@
           listId: this.listId,
           color: this.color // Change to dynamic color picker value
         })
-        this.openAddTask()
+        this.closeOverlay()
       },
-      openAddTask() {
-        this.$emit('openAddTaskOverlay')
+      closeOverlay() {
+        this.$emit('closeOverlay')
       }
     },
     props: {

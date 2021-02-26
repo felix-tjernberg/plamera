@@ -5,7 +5,7 @@
     <AddTask
       id="TaskOverlay"
       v-if="taskOverlay"
-      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+      @closeOverlay="taskOverlay = !taskOverlay"
       :listId="this.$route.params.listId"
     ></AddTask>
     <p class="tasksp" v-if="this.$store.state.someString < [0]">
@@ -14,7 +14,7 @@
     <TaskCard :listId="this.$route.params.listId"></TaskCard>
     <AddTaskButton
       id="Button"
-      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+      @openOverlay="taskOverlay = !taskOverlay"
     ></AddTaskButton>
   </div>
 </template>

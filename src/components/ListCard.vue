@@ -2,8 +2,8 @@
   <div>
     <EditList
       :listId="EditListId"
-      v-if="Overlay"
-      v-on:closeOverlay="Overlay = !Overlay"
+      v-if="editListOverlay"
+      v-on:closeOverlay="editListOverlay = !editListOverlay"
     />
     <div v-if="mobile">
       <div
@@ -52,21 +52,15 @@
     },
     data() {
       return {
-        Overlay: false,
+        editListOverlay: false,
         EditListId: '',
-        mobile: false,
-        addTaskOverlay: false,
-        addTaskListId: ''
+        mobile: true
       }
     },
     methods: {
       OpenEditOverlay(listId) {
-        this.Overlay = !this.Overlay
+        this.editListOverlay = !this.editListOverlay
         this.EditListId = listId
-      },
-      openAddTaskOverlay(listId) {
-        this.addTaskOverlay = !this.addTaskOverlay
-        this.addTaskListId = listId
       }
     }
   }

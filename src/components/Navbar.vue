@@ -1,6 +1,4 @@
 <template>
-  <!-- tag = button -->
-
   <nav>
     <ul>
       <li>
@@ -12,29 +10,12 @@
           </NavbarIcon>
         </router-link>
       </li>
-
       <li>
         <router-link to="/CalendarView">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="calendar">
           </NavbarIcon>
         </router-link>
       </li>
-
-      <!-- 
-
-      <li>
-        <router-link  to="/3">
-          <NavbarIcon
-            :color="isActive ? '#5DB075' : 'black'"
-            
-            name="notifications"
-          >
-          </NavbarIcon>
-        </router-link>
-      </li>
-      
- -->
-
       <li>
         <router-link to="/settings">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="settings">

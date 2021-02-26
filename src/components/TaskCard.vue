@@ -2,8 +2,8 @@
   <div>
     <EditTask
       :taskId="EditTaskId"
-      v-if="Overlay"
-      v-on:closeOverlay="Overlay = !Overlay"
+      v-if="editTaskOverlay"
+      v-on:closeOverlay="editTaskOverlay = !editTaskOverlay"
     />
     <div
       class="TaskCard"
@@ -42,14 +42,14 @@
     },
     data() {
       return {
-        Overlay: false,
+        editTaskOverlay: false,
         EditTaskId: '',
         color: ''
       }
     },
     methods: {
       OpenEditOverlay(taskId) {
-        this.Overlay = !this.Overlay
+        this.editTaskOverlay = !this.editTaskOverlay
         this.EditTaskId = taskId
       }
     },
