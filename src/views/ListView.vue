@@ -5,29 +5,29 @@
     <AddTask
       id="TaskOverlay"
       v-if="taskOverlay"
-      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+      @closeOverlay="taskOverlay = !taskOverlay"
       :listId="this.$route.params.listId"
     ></AddTask>
     <p class="tasksp" v-if="this.$store.state.someString < [0]">
       No Tasks added yet
     </p>
-    <TaskCard></TaskCard>
-    <AddTaskButton
+    <TaskCard :listId="this.$route.params.listId"></TaskCard>
+    <PlusButton
       id="Button"
-      v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
-    ></AddTaskButton>
+      @openOverlay="taskOverlay = !taskOverlay"
+    ></PlusButton>
   </div>
 </template>
 
 <script>
-  import AddTaskButton from '@/components/AddTaskButton.vue'
+  import PlusButton from '@/components/PlusButton.vue'
   import AddTask from '@/components/AddTask.vue'
   import TaskCard from '@/components/TaskCard.vue'
   export default {
     components: {
-      AddTaskButton,
       AddTask,
-      TaskCard
+      TaskCard,
+      PlusButton
     },
     data: function() {
       return { taskOverlay: false }

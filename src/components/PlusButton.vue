@@ -1,12 +1,12 @@
 <template>
-  <button class="addTaskButton" v-on:click="openAddTask"></button>
+  <button class="addTaskButton" @click="openOverlay"></button>
 </template>
 
 <script>
   export default {
     methods: {
-      openAddTask() {
-        this.$emit('openAddTaskOverlay')
+      openOverlay() {
+        this.$emit('openOverlay')
       }
     }
   }
@@ -23,5 +23,10 @@
     border: none;
     height: 58px;
     width: 58px;
+  }
+  #Button {
+    bottom: 80px;
+    right: 30px;
+    position: fixed;
   }
 </style>

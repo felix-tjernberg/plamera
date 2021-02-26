@@ -10,11 +10,9 @@
     <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
     <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
     </ThemePicker>
-
     <button id="EditListbutton" @click="editList">
-      Edit
+      Confirm
     </button>
-
     <p @click="closeOverlay">
       Cancel
     </p>
@@ -26,7 +24,10 @@
   import PreviewTheme from '@/components/PreviewTheme.vue'
 
   export default {
-    props: ['listId'],
+    created() {
+      this.theme = this.$store.state.listObjects[this.listId].theme
+      this.title = this.$store.state.listObjects[this.listId].title
+    },
     components: {
       ThemePicker,
       PreviewTheme
@@ -61,11 +62,7 @@
         this.closeOverlay()
       }
     },
-
-    created() {
-      this.theme = this.$store.state.listObjects[this.listId].theme
-      this.title = this.$store.state.listObjects[this.listId].title
-    }
+    props: ['listId']
   }
 </script>
 

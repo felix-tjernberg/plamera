@@ -12,11 +12,9 @@
     <div id="colorPicker">
       <input type="color" v-model="color" />
     </div>
-
     <button id="EditListbutton" @click="editTask">
-      Edit
+      Confirm
     </button>
-
     <p @click="closeOverlay">
       Cancel
     </p>
@@ -27,7 +25,10 @@
   import PreviewColor from '@/components/PreviewColor.vue'
 
   export default {
-    props: ['taskId'],
+    created() {
+      this.color = this.$store.state.taskObjects[this.taskId].color
+      this.title = this.$store.state.taskObjects[this.taskId].title
+    },
     components: {
       PreviewColor
     },
@@ -41,7 +42,6 @@
       closeOverlay() {
         this.$emit('closeOverlay')
       },
-
       editTask() {
         this.$store.commit('editTask', {
           taskId: this.taskId,
@@ -51,11 +51,7 @@
         this.closeOverlay()
       }
     },
-
-    created() {
-      this.color = this.$store.state.taskObjects[this.taskId].color
-      this.title = this.$store.state.taskObjects[this.taskId].title
-    }
+    props: ['taskId']
   }
 </script>
 

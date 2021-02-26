@@ -17,8 +17,6 @@
   }
 </script>
 <style>
-  /* Tempory styling of a tempory nav */
-
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -28,6 +26,6 @@
   }
 
   main:first-child {
-    flex-grow: 1;
+    margin-bottom: 100px;
   }
 </style>

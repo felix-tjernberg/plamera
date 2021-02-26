@@ -1,5 +1,5 @@
 <template>
-  <div class="Container">
+  <div>
     <form id="overlay">
       <input
         placeholder="List name"
@@ -10,21 +10,10 @@
       <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
       <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
       </ThemePicker>
-
-      <button
-        v-on:click="openAddTask"
-        class="addListButton"
-        @click="
-          $store.commit('addList', {
-            title: title,
-            theme: theme // Change to dynamic theme picker value
-          })
-        "
-        id="save"
-      >
+      <button @click="addTask" class="addListButton" id="save">
         Add List
       </button>
-      <p id="close" v-on:click="openAddTask">Cancel</p>
+      <p id="close" @click="closeOverlay">Cancel</p>
     </form>
   </div>
 </template>
@@ -37,7 +26,6 @@
       ThemePicker,
       PreviewTheme
     },
-
     data() {
       return {
         title: '',
@@ -52,12 +40,18 @@
       }
     },
     methods: {
-      openAddTask() {
-        this.$emit('openAddTaskOverlay')
+      closeOverlay() {
+        this.$emit('closeOverlay')
+      },
+      addTask() {
+        this.$store.commit('addList', {
+          title: this.title,
+          theme: this.theme
+        })
+        this.closeOverlay()
       },
       setTheme(theme) {
         this.theme = theme
-        console.log('setting theme to' + theme)
       }
     }
   }
