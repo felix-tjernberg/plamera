@@ -5,7 +5,7 @@
         <router-link to="/">
           <NavbarIcon
             :color="isActive ? '#5DB075' : 'black'"
-            name="task_overview"
+            name="task_overview" value="My task"
           >
           </NavbarIcon>
         </router-link>
@@ -66,13 +66,31 @@
     padding: 0;
   }
 
-  ul li {
+  /*ul li {
     display: inline;
-  }
+  }*/
 
   button {
     margin: 23px;
     border: none;
     background: none;
+  }
+
+  @media only screen and (min-device-width: 1000px) {
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    nav {
+      height: 100%;
+      width: 60px;
+      top: 0;
+      left: 0;
+      position: fixed;
+      background-color: white;
+    }
   }
 </style>
