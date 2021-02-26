@@ -13,13 +13,7 @@
     components: {
       ListCard,
       DefaultLists
-    },
-    data: function() {
-      return {
-        addTaskOverlay: false
-      }
-    },
-    methods: {}
+    }
   }
 </script>
 
