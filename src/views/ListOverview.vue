@@ -1,14 +1,5 @@
 <template>
   <div class="container">
-    <AddList
-      v-if="addTaskOverlay"
-      v-on:closeOverlay="addTaskOverlay = !addTaskOverlay"
-      id="addListOverlay"
-    ></AddList>
-    <PlusButton
-      id="Button"
-      v-on:openOverlay="addTaskOverlay = !addTaskOverlay"
-    ></PlusButton>
     <h1>My Tasks</h1>
     <default-lists />
     <ListCard></ListCard>
@@ -16,16 +7,12 @@
 </template>
 
 <script>
-  import AddList from '@/components/AddList.vue'
   import DefaultLists from '@/components/DefaultLists.vue'
   import ListCard from '@/components/ListCard.vue'
-  import PlusButton from '@/components/PlusButton.vue'
   export default {
     components: {
-      AddList,
       ListCard,
-      DefaultLists,
-      PlusButton
+      DefaultLists
     },
     data: function() {
       return {

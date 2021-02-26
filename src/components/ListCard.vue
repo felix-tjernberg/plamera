@@ -1,11 +1,20 @@
 <template>
   <div>
+    <AddList
+      v-if="addListOverlay"
+      @closeOverlay="addListOverlay = !addListOverlay"
+      id="addListOverlay"
+    ></AddList>
     <EditList
       :listId="EditListId"
       v-if="editListOverlay"
-      v-on:closeOverlay="editListOverlay = !editListOverlay"
+      @closeOverlay="editListOverlay = !editListOverlay"
     />
     <div v-if="mobile">
+      <PlusButton
+        id="Button"
+        @openOverlay="addListOverlay = !addListOverlay"
+      ></PlusButton>
       <div
         class="ListCard"
         v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
@@ -28,6 +37,9 @@
         @closeOverlay="closeAddTaskOverlay"
         :listId="AddTaskListId"
       />
+      <button @click="addListOverlay = !addListOverlay">
+        Create List
+      </button>
       <div class="desktop-list-card-container">
         <div
           class="desktop-list-card"
@@ -50,15 +62,17 @@
 </template>
 
 <script>
-  import EditList from '@/components/EditList'
-  import TaskCard from '@/components/TaskCard'
-  import PlusButton from '@/components/PlusButton'
+  import AddList from '@/components/AddList.vue'
   import AddTask from '@/components/AddTask'
+  import EditList from '@/components/EditList'
+  import PlusButton from '@/components/PlusButton'
+  import TaskCard from '@/components/TaskCard'
   export default {
     created() {
       this.mobile = window.innerWidth < 990
     },
     components: {
+      AddList,
       AddTask,
       EditList,
       TaskCard,
@@ -68,6 +82,7 @@
       return {
         addTaskOverlay: false,
         AddTaskListId: '',
+        addListOverlay: false,
         editListOverlay: false,
         EditListId: '',
         mobile: true
