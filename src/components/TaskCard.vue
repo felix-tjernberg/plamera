@@ -81,6 +81,11 @@
     background-color: #f0f0f0;
     margin-bottom: 15px;
   }
+  @media (min-width: 990px) {
+    .TaskCard {
+      height: 50px;
+    }
+  }
 
   .emptyStar {
     align-self: center;

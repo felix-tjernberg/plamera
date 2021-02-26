@@ -23,8 +23,14 @@
       </div>
     </div>
     <div v-else>
+      <add-task
+        v-if="addTaskOverlay"
+        @closeOverlay="closeAddTaskOverlay"
+        :listId="AddTaskListId"
+      />
       <div class="desktop-list-card-container">
         <div
+          class="desktop-list-card"
           v-for="(listObject, listObjectId, listArrayNumber) in this.$store
             .state.listObjects"
           :key="listArrayNumber"
@@ -36,6 +42,7 @@
             class="Editlistcard"
           ></button>
           <task-card :listId="listObjectId" />
+          <plus-button @openOverlay="OpenAddTaskOverlay(listObjectId)" />
         </div>
       </div>
     </div>
@@ -45,13 +52,22 @@
 <script>
   import EditList from '@/components/EditList'
   import TaskCard from '@/components/TaskCard'
+  import PlusButton from '@/components/PlusButton'
+  import AddTask from '@/components/AddTask'
   export default {
+    created() {
+      this.mobile = window.innerWidth < 990
+    },
     components: {
+      AddTask,
       EditList,
-      TaskCard
+      TaskCard,
+      PlusButton
     },
     data() {
       return {
+        addTaskOverlay: false,
+        AddTaskListId: '',
         editListOverlay: false,
         EditListId: '',
         mobile: true
@@ -61,7 +77,20 @@
       OpenEditOverlay(listId) {
         this.editListOverlay = !this.editListOverlay
         this.EditListId = listId
+      },
+      OpenAddTaskOverlay(listId) {
+        this.addTaskOverlay = !this.addTaskOverlay
+        this.AddTaskListId = listId
+      },
+      closeAddTaskOverlay() {
+        this.addTaskOverlay = !this.addTaskOverlay
+      },
+      onResize() {
+        this.mobile = window.innerWidth < 990
       }
+    },
+    mounted() {
+      window.onresize = this.onResize
     }
   }
 </script>
@@ -70,13 +99,20 @@
   .desktop-list-card-container {
     margin: 100px;
     display: grid;
-    grid-template-columns: repeat(4, 300px);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 100px;
   }
   .desktop-list-card-container h2 {
     color: white;
   }
+  .desktop-list-card {
+    background-size: cover !important;
+    border-radius: var(--border-radius-base);
+    padding: 32px;
+    align-self: start; /* choose center or start */
+  }
   .ListCard {
+    background-size: cover !important;
     display: flex;
     align-items: center;
     justify-content: space-around;
