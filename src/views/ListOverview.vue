@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>My Tasks</h1>
+    <h1>Plamera</h1>
     <default-lists />
     <ListCard></ListCard>
   </div>
