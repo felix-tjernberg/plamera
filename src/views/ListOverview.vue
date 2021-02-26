@@ -22,7 +22,6 @@
       </div>
     </div>
     <hr />
-    <p id="ML">My Lists</p>
     <div class="listContainer">
       <AddList
         v-if="taskOverlay"
@@ -30,7 +29,6 @@
         id="addListOverlay"
       ></AddList>
       <ListCard></ListCard>
-
       <AddTaskButton
         id="Button"
         v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
@@ -125,6 +123,11 @@
   #star {
     width: 25px;
     height: 25px;
+  }
+
+  .listContainer {
+    display: flex;
+    place-content: center;
   }
 
   /* ----------- iPhone 6+, 7+ and 8+ ----------- */

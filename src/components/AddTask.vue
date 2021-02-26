@@ -2,13 +2,13 @@
   <div class="Container">
     <form id="overlay">
       <input
-        placeholder="List name"
+        placeholder="Task name"
         type="text"
         name=""
         id="OverlayInput"
         v-model="title"
       />
-<PreviewColor :title="title" :color="color"/>
+      <PreviewColor :title="title" :color="color" />
       <h3>Pick a color</h3>
       <div id="colorPicker">
         <input type="color" v-model="color" />
@@ -22,11 +22,11 @@
   </div>
 </template>
 <script>
-import PreviewColor from '@/components/PreviewColor.vue'
+  import PreviewColor from '@/components/PreviewColor.vue'
   export default {
     name: 'AddTask',
-    components:{
-      PreviewColor,
+    components: {
+      PreviewColor
     },
     data() {
       return {

@@ -12,7 +12,7 @@
     </ThemePicker>
 
     <button id="EditListbutton" @click="editList">
-      Edit
+      Confirm
     </button>
 
     <p @click="closeOverlay">

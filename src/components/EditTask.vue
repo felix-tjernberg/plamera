@@ -14,7 +14,7 @@
     </div>
 
     <button id="EditListbutton" @click="editTask">
-      Edit
+      Confirm
     </button>
 
     <p @click="closeOverlay">
