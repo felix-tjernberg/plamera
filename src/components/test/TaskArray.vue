@@ -159,6 +159,11 @@
   export default {
     computed: {
       filteredTaskObjects() {
+        // const taskObjectsEntries = Object.entries(this.$store.state.taskObjects)
+        // const filteredTaskObjectsArray = taskObjectsEntries.filter(
+        //   taskObject => taskObject[1].important === true
+        // )
+        // const filteredTaskObjects = Object.fromEntries(filteredTaskObjectsArray)
         const filterTaskObjectsByListId = Object.fromEntries(
           Object.entries(this.$store.state.taskObjects).filter(
             taskObject => taskObject[1].listId === this.listId
