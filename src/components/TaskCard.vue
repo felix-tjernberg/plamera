@@ -5,10 +5,11 @@
       v-if="editTaskOverlay"
       v-on:closeOverlay="editTaskOverlay = !editTaskOverlay"
     />
+    <h3>Important</h3>
     <div
       class="TaskCard"
-      v-for="(taskObject, taskObjectId, taskArrayNumber) in filteredTaskObjects"
-      :key="taskArrayNumber"
+      v-for="(taskObject, taskObjectId) in filteredTaskObjects.important"
+      :key="taskObjectId"
       v-bind:style="{ borderLeftColor: taskObject.color }"
     >
       <button
@@ -20,6 +21,65 @@
         "
       ></button>
       <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
+        {{ taskObject.title }}
+      </p>
+      <button
+        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+        @click="
+          $store.commit('completeTask', {
+            taskId: taskObjectId
+          })
+        "
+      ></button>
+    </div>
+    <h3>Rest</h3>
+    <!--this needs a better heading-->
+    <div
+      class="TaskCard"
+      v-for="(taskObject, taskObjectId) in filteredTaskObjects.rest"
+      :key="taskObjectId"
+      v-bind:style="{ borderLeftColor: taskObject.color }"
+    >
+      <button
+        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+        @click="
+          $store.commit('emphasizeTask', {
+            taskId: taskObjectId
+          })
+        "
+      ></button>
+      <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
+        {{ taskObject.title }}
+      </p>
+      <button
+        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+        @click="
+          $store.commit('completeTask', {
+            taskId: taskObjectId
+          })
+        "
+      ></button>
+    </div>
+    <h3>Completed</h3>
+    <div
+      class="TaskCard"
+      v-for="(taskObject, taskObjectId) in filteredTaskObjects.completed"
+      :key="taskObjectId"
+      v-bind:style="{ borderLeftColor: taskObject.color }"
+    >
+      <button
+        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+        @click="
+          $store.commit('emphasizeTask', {
+            taskId: taskObjectId
+          })
+        "
+      ></button>
+      <p
+        @click="OpenEditOverlay(taskObjectId)"
+        class="TaskTitle"
+        :data-completed="taskObject.completed"
+      >
         {{ taskObject.title }}
       </p>
       <button
@@ -55,13 +115,37 @@
     },
     computed: {
       filteredTaskObjects() {
-        const filteredTaskObjects = Object.fromEntries(
+        const filterTaskObjectsByListId = Object.fromEntries(
           Object.entries(this.$store.state.taskObjects).filter(
             taskObject => taskObject[1].listId === this.listId
           )
         )
+        const filterTaskObjectsByImportant = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject =>
+              taskObject[1].important === true &&
+              taskObject[1].completed === false
+          )
+        )
+        const filterTaskObjectsByCompleted = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject => taskObject[1].completed === true
+          )
+        )
+        const filterTaskObjectsByFalse = Object.fromEntries(
+          Object.entries(filterTaskObjectsByListId).filter(
+            taskObject =>
+              taskObject[1].important === false &&
+              taskObject[1].completed === false
+          )
+        )
 
-        return filteredTaskObjects
+        return {
+          all: filterTaskObjectsByListId,
+          important: filterTaskObjectsByImportant,
+          completed: filterTaskObjectsByCompleted,
+          rest: filterTaskObjectsByFalse
+        }
       }
     },
     props: {
@@ -71,6 +155,9 @@
 </script>
 
 <style scoped>
+  h3 {
+    color: white;
+  }
   .TaskCard {
     border-left-color: rgb(255, 165, 0);
     border-left-style: solid;
@@ -112,6 +199,9 @@
     font-weight: 300;
     align-self: center;
     margin: auto;
+  }
+  [data-completed='true'] {
+    text-decoration: line-through;
   }
 
   .emptyCircle {
