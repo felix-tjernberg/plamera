@@ -158,6 +158,11 @@
   h3 {
     color: white;
   }
+  @media (max-width: 990px) {
+    h3 {
+      color: black;
+    }
+  }
   .TaskCard {
     border-left-color: rgb(255, 165, 0);
     border-left-style: solid;
