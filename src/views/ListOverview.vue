@@ -5,29 +5,27 @@
       v-on:closeOverlay="addTaskOverlay = !addTaskOverlay"
       id="addListOverlay"
     ></AddList>
-    <AddTaskButton
+    <PlusButton
       id="Button"
       v-on:openOverlay="addTaskOverlay = !addTaskOverlay"
-    ></AddTaskButton>
+    ></PlusButton>
     <h1>My Tasks</h1>
     <default-lists />
-    <div class="listContainer">
-      <ListCard></ListCard>
-    </div>
+    <ListCard></ListCard>
   </div>
 </template>
 
 <script>
-  import ListCard from '@/components/ListCard.vue'
-  import AddTaskButton from '@/components/AddTaskButton.vue'
   import AddList from '@/components/AddList.vue'
   import DefaultLists from '@/components/DefaultLists.vue'
+  import ListCard from '@/components/ListCard.vue'
+  import PlusButton from '@/components/PlusButton.vue'
   export default {
     components: {
-      AddTaskButton,
       AddList,
       ListCard,
-      DefaultLists
+      DefaultLists,
+      PlusButton
     },
     data: function() {
       return {
@@ -39,6 +37,7 @@
 </script>
 
 <style>
+  /* This selector needs to be moved */
   h1 {
     height: 36px;
     left: 16px;
@@ -55,18 +54,8 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #fff;
   }
-
   textarea:focus,
   input:focus /* What are these selectors for? */ {
     outline: none;
   }
-  #Button {
-    bottom: 80px;
-    right: 30px;
-    position: fixed;
-  }
-  /* .listContainer {
-    display: flex;
-    place-content: center;
-  } */
 </style>

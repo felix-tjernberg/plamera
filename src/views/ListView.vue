@@ -12,22 +12,22 @@
       No Tasks added yet
     </p>
     <TaskCard :listId="this.$route.params.listId"></TaskCard>
-    <AddTaskButton
+    <PlusButton
       id="Button"
       @openOverlay="taskOverlay = !taskOverlay"
-    ></AddTaskButton>
+    ></PlusButton>
   </div>
 </template>
 
 <script>
-  import AddTaskButton from '@/components/AddTaskButton.vue'
+  import PlusButton from '@/components/PlusButton.vue'
   import AddTask from '@/components/AddTask.vue'
   import TaskCard from '@/components/TaskCard.vue'
   export default {
     components: {
-      AddTaskButton,
       AddTask,
-      TaskCard
+      TaskCard,
+      PlusButton
     },
     data: function() {
       return { taskOverlay: false }
