@@ -112,10 +112,11 @@
 
 <style scoped>
   .desktop-list-card-container {
-    margin: 100px;
+    --margin-desktop: 100px;
+    margin: var(--margin-desktop);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 100px;
+    gap: var(--margin-desktop);
   }
   .desktop-list-card-container h2 {
     color: white;
