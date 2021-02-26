@@ -55,7 +55,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .overlay {
     display: flex;
     flex-direction: column;
