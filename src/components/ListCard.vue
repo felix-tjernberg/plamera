@@ -1,5 +1,8 @@
 <template>
   <div>
+    <button id="DesktopButton" @click="addListOverlay = !addListOverlay">
+      Create List
+    </button>
     <AddList
       v-if="addListOverlay"
       @closeOverlay="addListOverlay = !addListOverlay"
@@ -37,9 +40,7 @@
         @closeOverlay="closeAddTaskOverlay"
         :listId="AddTaskListId"
       />
-      <button @click="addListOverlay = !addListOverlay">
-        Create List
-      </button>
+
       <div class="desktop-list-card-container">
         <div
           class="desktop-list-card"
@@ -58,6 +59,41 @@
         </div>
       </div>
     </div>
+    <!--MOBILE-->
+    <div class="Mobile">
+      <router-link
+        class="ListCard"
+        v-on:goToList="listname"
+        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
+          .listObjects"
+        :key="listArrayNumber"
+        :to="listObject.url"
+        :style="'background:' + listObject.theme"
+      >
+        {{ listObject.title }}
+      </router-link>
+    </div>
+    <!--MOBILE-->
+    <!--DESKTOP-->
+    <div class="Desktop">
+      <div
+        class="ListCardDesktop"
+        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
+          .listObjects"
+        :key="listArrayNumber"
+        :to="listObject.url"
+        :style="'background:' + listObject.theme"
+      >
+        <p id="ObjectTxt">{{ listObject.title }}</p>
+        <TaskCard></TaskCard>
+        <AddTask
+          v-if="taskOverlay"
+          v-on:openAddTaskOverlay="taskOverlay = !taskOverlay"
+        />
+        <AddTaskButton v-on:openAddTaskOverlay="taskOverlay = !taskOverlay" />
+      </div>
+    </div>
+    <!--DESKTOP-->
   </div>
 </template>
 
@@ -155,5 +191,18 @@
     align-self: center;
     margin: auto;
     color: white;
+  }
+  @media only screen and (min-device-width: 1000px) {
+    #DesktopButton {
+      border-radius: 30px;
+      background-color: #5db075;
+      border: none;
+      height: 58px;
+      width: 200px;
+      font-size: 18px;
+      color: white;
+      float: left;
+      margin-top: -50px;
+    }
   }
 </style>
