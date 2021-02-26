@@ -1,25 +1,30 @@
 <template>
   <nav>
+    <h1 id="Desktoph1">Plamera</h1>
     <ul>
       <li>
         <router-link to="/">
           <NavbarIcon
             :color="isActive ? '#5DB075' : 'black'"
-            name="task_overview" value="My task"
+            name="task_overview"
+            value="My task"
           >
           </NavbarIcon>
+          <p>My Tasks</p>
         </router-link>
       </li>
       <li>
         <router-link to="/CalendarView">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="calendar">
           </NavbarIcon>
+          <p>Calender</p>
         </router-link>
       </li>
       <li>
         <router-link to="/settings">
           <NavbarIcon :color="isActive ? '#5DB075' : 'black'" name="settings">
           </NavbarIcon>
+          <p>Settings</p>
         </router-link>
       </li>
     </ul>
@@ -80,17 +85,36 @@
     ul {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
+      grid-gap: 10px;
     }
 
     nav {
+      box-shadow: -96px 0px 1px 98px rgba(0, 0, 0, 0.21);
       height: 100%;
-      width: 60px;
+      width: 256px;
       top: 0;
       left: 0;
       position: fixed;
       background-color: white;
+    }
+    li a {
+      width: 236px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      grid-gap: 25px;
+    }
+    li svg {
+      width: 25px;
+      height: 25px;
+    }
+    li p {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 48px;
     }
   }
 </style>

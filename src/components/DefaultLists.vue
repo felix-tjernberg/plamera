@@ -55,6 +55,7 @@
     padding: 20px;
   }
   #defaultLists {
+    margin-left: 256px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
