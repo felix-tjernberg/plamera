@@ -186,10 +186,10 @@
     }
     .stripes {
       background-image: Url('~@/assets/Stripes.png');
-      width: 500px;
+      width: 400px;
       height: 445px;
       position: absolute;
-      left: 10%;
+      left: 0%;
       bottom: 0%;
       background-repeat: no-repeat;
     }
