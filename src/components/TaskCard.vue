@@ -5,91 +5,98 @@
       v-if="editTaskOverlay"
       v-on:closeOverlay="editTaskOverlay = !editTaskOverlay"
     />
-    <h3>Important</h3>
-    <div
-      class="TaskCard"
-      v-for="(taskObject, taskObjectId) in filteredTaskObjects.important"
-      :key="taskObjectId"
-      v-bind:style="{ borderLeftColor: taskObject.color }"
-    >
-      <button
-        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
-        @click="
-          $store.commit('emphasizeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-      <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
-        {{ taskObject.title }}
-      </p>
-      <button
-        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
-        @click="
-          $store.commit('completeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-    </div>
-    <h3>Rest</h3>
-    <!--this needs a better heading-->
-    <div
-      class="TaskCard"
-      v-for="(taskObject, taskObjectId) in filteredTaskObjects.rest"
-      :key="taskObjectId"
-      v-bind:style="{ borderLeftColor: taskObject.color }"
-    >
-      <button
-        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
-        @click="
-          $store.commit('emphasizeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-      <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
-        {{ taskObject.title }}
-      </p>
-      <button
-        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
-        @click="
-          $store.commit('completeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-    </div>
-    <h3>Completed</h3>
-    <div
-      class="TaskCard"
-      v-for="(taskObject, taskObjectId) in filteredTaskObjects.completed"
-      :key="taskObjectId"
-      v-bind:style="{ borderLeftColor: taskObject.color }"
-    >
-      <button
-        :class="taskObject.important ? 'filledStar' : 'emptyStar'"
-        @click="
-          $store.commit('emphasizeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
-      <p
-        @click="OpenEditOverlay(taskObjectId)"
-        class="TaskTitle"
-        :data-completed="taskObject.completed"
+    <div v-if="TaskExist">
+      <h3>Important</h3>
+      <div
+        class="TaskCard"
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.important"
+        :key="taskObjectId"
+        v-bind:style="{ borderLeftColor: taskObject.color }"
       >
-        {{ taskObject.title }}
+        <button
+          :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+        <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
+          {{ taskObject.title }}
+        </p>
+        <button
+          :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+      </div>
+      <h3>Rest</h3>
+      <!--this needs a better heading-->
+      <div
+        class="TaskCard"
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.rest"
+        :key="taskObjectId"
+        v-bind:style="{ borderLeftColor: taskObject.color }"
+      >
+        <button
+          :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+        <p @click="OpenEditOverlay(taskObjectId)" class="TaskTitle">
+          {{ taskObject.title }}
+        </p>
+        <button
+          :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+      </div>
+      <h3>Completed</h3>
+      <div
+        class="TaskCard"
+        v-for="(taskObject, taskObjectId) in filteredTaskObjects.completed"
+        :key="taskObjectId"
+        v-bind:style="{ borderLeftColor: taskObject.color }"
+      >
+        <button
+          :class="taskObject.important ? 'filledStar' : 'emptyStar'"
+          @click="
+            $store.commit('emphasizeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+        <p
+          @click="OpenEditOverlay(taskObjectId)"
+          class="TaskTitle"
+          :data-completed="taskObject.completed"
+        >
+          {{ taskObject.title }}
+        </p>
+        <button
+          :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
+          @click="
+            $store.commit('completeTask', {
+              taskId: taskObjectId
+            })
+          "
+        ></button>
+      </div>
+    </div>
+    <div v-else>
+      <p class="tasksp">
+        No Tasks added yet
       </p>
-      <button
-        :class="taskObject.completed ? 'filledCircle' : 'emptyCircle'"
-        @click="
-          $store.commit('completeTask', {
-            taskId: taskObjectId
-          })
-        "
-      ></button>
     </div>
   </div>
 </template>
@@ -146,6 +153,9 @@
           completed: filterTaskObjectsByCompleted,
           rest: filterTaskObjectsByFalse
         }
+      },
+      TaskExist() {
+        return Boolean(Object.keys(this.filteredTaskObjects.all).length)
       }
     },
     props: {
@@ -172,6 +182,25 @@
     border-radius: 8px;
     background-color: #f0f0f0;
     margin-bottom: 15px;
+  }
+
+  .tasksp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 400px;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #787885;
+    margin: 30px;
   }
   @media (min-width: 990px) {
     .TaskCard {
