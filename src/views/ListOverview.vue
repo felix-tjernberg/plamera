@@ -7,6 +7,16 @@
     <button id="DesktopButton" @click="addListOverlay = !addListOverlay">
       Create List
     </button>
+    <AddList
+      v-if="addListOverlay"
+      @closeOverlay="addListOverlay = !addListOverlay"
+      id="addListOverlay"
+    ></AddList>
+    <EditList
+      :listId="EditListId"
+      v-if="editListOverlay"
+      @closeOverlay="editListOverlay = !editListOverlay"
+    />
     <ListCard></ListCard>
   </div>
 </template>
@@ -14,10 +24,18 @@
 <script>
   import DefaultLists from '@/components/DefaultLists.vue'
   import ListCard from '@/components/ListCard.vue'
+  import AddList from '@/components/AddList.vue'
+
   export default {
     components: {
       ListCard,
-      DefaultLists
+      DefaultLists,
+      AddList
+    },
+    data() {
+      return {
+        addListOverlay: false
+      }
     }
   }
 </script>
@@ -39,7 +57,8 @@
     opacity: 0.21;
     border: 1px solid #000000;
     margin-bottom: 15px;
-    margin-left: 256px;
+    margin-top: 20px;
+  
   }
 
   /* This selector needs to be moved */
@@ -52,10 +71,21 @@
   input:focus /* What are these selectors for? */ {
     outline: none;
   }
+
+  #DesktopButton {
+    display: none;
+  }
+  
   @media only screen and (min-device-width: 1000px) {
     h3 {
       margin-left: 256px;
     }
+  hr {
+    opacity: 0.21;
+    border: 1px solid #000000;
+    margin-bottom: 15px;
+    margin-left: 256px;
+  }
     #DesktopButton {
       margin-left: 256px;
       display: block;
