@@ -1,8 +1,5 @@
 <template>
   <div>
-    <button id="DesktopButton" @click="addListOverlay = !addListOverlay">
-      Create List
-    </button>
     <AddList
       v-if="addListOverlay"
       @closeOverlay="addListOverlay = !addListOverlay"
@@ -13,7 +10,7 @@
       v-if="editListOverlay"
       @closeOverlay="editListOverlay = !editListOverlay"
     />
-    <div v-if="mobile">
+    <div class="Listoverlay" v-if="mobile">
       <PlusButton
         id="Button"
         @openOverlay="addListOverlay = !addListOverlay"
@@ -118,6 +115,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: var(--margin-desktop);
+    margin-left: 256px;
   }
   .desktop-list-card-container h2 {
     color: white;
@@ -161,17 +159,5 @@
     color: white;
   }
   @media only screen and (min-device-width: 1000px) {
-    #DesktopButton {
-      display: block;
-      border-radius: 30px;
-      background-color: #5db075;
-      border: none;
-      height: 58px;
-      width: 200px;
-      font-size: 18px;
-      color: white;
-      float: left;
-      margin-top: -50px;
-    }
   }
 </style>
