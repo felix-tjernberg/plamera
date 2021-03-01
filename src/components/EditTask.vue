@@ -12,6 +12,7 @@
     <div id="colorPicker">
       <input type="color" v-model="color" />
     </div>
+    <button class="Removebutton" @click="removeTask">Remove Task</button>
     <button id="EditListbutton" @click="editTask">
       Confirm
     </button>
@@ -49,13 +50,19 @@
           color: this.color
         })
         this.closeOverlay()
+      },
+      removeTask() {
+        this.$store.commit('removeTask', {
+          taskId: this.taskId
+        })
+        this.closeOverlay()
       }
     },
     props: ['taskId']
   }
 </script>
 
-<style>
+<style scoped>
   .overlay {
     display: flex;
     flex-direction: column;
@@ -63,7 +70,7 @@
     background-color: #ffff;
     position: fixed;
     width: 380px;
-    height: 525px;
+    height: 632px;
     top: 50%;
     left: 50%;
     margin-top: -50px;
@@ -107,5 +114,27 @@
     border-radius: 50px;
     overflow: hidden;
     border: 2px solid grey;
+  }
+
+  .Removebutton {
+    display: flex;
+    align-self: center;
+    color: #ed2121;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    margin-bottom: 32px;
+    margin-top: 32px;
+  }
+
+  .Removebutton::before {
+    content: '';
+    background: none;
+    border: none;
+    height: 20px;
+    width: 18px;
+    margin-right: 10px;
+    background-image: Url('~@/assets/Delete.svg');
   }
 </style>

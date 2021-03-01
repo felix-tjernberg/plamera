@@ -10,6 +10,7 @@
     <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
     <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
     </ThemePicker>
+    <button class="Removebutton" @click="removeList">Remove List</button>
     <button id="EditListbutton" @click="editList">
       Confirm
     </button>
@@ -60,6 +61,12 @@
           theme: this.theme
         })
         this.closeOverlay()
+      },
+      removeList() {
+        this.$store.commit('removeList', {
+          listId: this.listId
+        })
+        this.closeOverlay()
       }
     },
     props: ['listId']
@@ -74,7 +81,7 @@
     background-color: #ffff;
     position: fixed;
     width: 380px;
-    height: 450px;
+    height: 546px;
     top: 50%;
     left: 50%;
     margin-top: -50px;
@@ -100,5 +107,27 @@
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  .Removebutton {
+    display: flex;
+    align-self: center;
+    color: #ed2121;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    font-style:normal;
+    margin-bottom: 32px;
+    margin-top: 32px;
+  }
+
+  .Removebutton::before {
+    content: '';
+    background: none;
+    border: none;
+    height: 20px;
+    width: 18px;
+    margin-right: 10px;
+    background-image: Url('~@/assets/Delete.svg');
   }
 </style>
