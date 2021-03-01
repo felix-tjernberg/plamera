@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Navbar></Navbar>
     <button class="btn-back" @click="goToListOverview()" id="back">Back</button>
     <h1>{{ $route.params.listName }}</h1>
     <DefaultLists />
@@ -24,12 +25,14 @@
   import PlusButton from '@/components/PlusButton.vue'
   import AddTask from '@/components/AddTask.vue'
   import TaskCard from '@/components/TaskCard.vue'
+  import Navbar from '@/components/Navbar.vue'
   export default {
     components: {
       AddTask,
       TaskCard,
       PlusButton,
-      DefaultLists
+      DefaultLists,
+      Navbar
     },
     data: function() {
       return {

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Navbar></Navbar>
     <h1 id="MobilH">My Tasks</h1>
     <default-lists />
     <hr />
@@ -25,12 +26,14 @@
   import DefaultLists from '@/components/DefaultLists.vue'
   import ListCard from '@/components/ListCard.vue'
   import AddList from '@/components/AddList.vue'
+  import Navbar from '@/components/Navbar.vue'
 
   export default {
     components: {
       ListCard,
       DefaultLists,
-      AddList
+      AddList,
+      Navbar
     },
     data() {
       return {
@@ -51,14 +54,13 @@
     font-weight: 600;
     font-size: 30px;
     line-height: 36px;
-    color:#2D3436;
+    color: #2d3436;
   }
   hr {
     opacity: 0.21;
     border: 1px solid #000000;
     margin-bottom: 15px;
     margin-top: 20px;
-  
   }
 
   /* This selector needs to be moved */
@@ -75,17 +77,17 @@
   #DesktopButton {
     display: none;
   }
-  
+
   @media only screen and (min-device-width: 1000px) {
     h3 {
       margin-left: 256px;
     }
-  hr {
-    opacity: 0.21;
-    border: 1px solid #000000;
-    margin-bottom: 15px;
-    margin-left: 256px;
-  }
+    hr {
+      opacity: 0.21;
+      border: 1px solid #000000;
+      margin-bottom: 15px;
+      margin-left: 256px;
+    }
     #DesktopButton {
       margin-left: 256px;
       display: block;

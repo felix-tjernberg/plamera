@@ -1,5 +1,6 @@
 <template>
   <div class="settings">
+    <Navbar></Navbar>
     <div id="Header">
       <h1>Settings</h1>
       <router-link to="/"><p id="B">Back</p></router-link>
@@ -18,8 +19,12 @@
   </div>
 </template>
 <script>
+  import Navbar from '@/components/Navbar.vue'
   export default {
-    name: 'settings'
+    name: 'settings',
+    components: {
+      Navbar
+    }
   }
 </script>
 <style scoped>
@@ -65,6 +70,9 @@
       width: 500px;
       margin-left: 39%;
       border: solid rgb(219, 219, 219) 1px;
+    }
+    #B {
+      display: none;
     }
   }
 </style>
