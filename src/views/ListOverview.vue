@@ -51,6 +51,7 @@
     font-weight: 600;
     font-size: 30px;
     line-height: 36px;
+    color:#2D3436;
   }
   hr {
     opacity: 0.21;

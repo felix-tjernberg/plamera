@@ -41,6 +41,7 @@
     border-radius: 8px;
     height: 94px;
     width: 343px;
+    margin-top: 32px;
     font-style: normal;
     font-size: 16px;
     font-weight: bold;
