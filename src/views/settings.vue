@@ -11,9 +11,6 @@
       <div class="bar"><p class="SetTxt">Link Account</p></div>
       <div class="bar"><p class="SetTxt">Prefrences</p></div>
       <div class="bar">
-        <a class="SetTxt" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          >Khalids OnlyFans</a
-        >
       </div>
 
       <p id="ver">Ver 0.1</p>
