@@ -15,20 +15,27 @@
         id="Button"
         @openOverlay="addListOverlay = !addListOverlay"
       ></PlusButton>
-      <div
-        class="ListCard"
-        v-for="(listObject, listObjectId, listArrayNumber) in this.$store.state
-          .listObjects"
-        :key="listArrayNumber"
-        :style="'background:' + listObject.theme"
-      >
-        <button
-          @click="OpenEditOverlay(listObjectId)"
-          class="Editlistcard"
-        ></button>
-        <router-link class="testp" :to="listObject.url">
-          <p>{{ listObject.title }}</p>
-        </router-link>
+      <div v-if="ListExist">
+        <div
+          class="ListCard"
+          v-for="(listObject, listObjectId, listArrayNumber) in this.$store
+            .state.listObjects"
+          :key="listArrayNumber"
+          :style="'background:' + listObject.theme"
+        >
+          <button
+            @click="OpenEditOverlay(listObjectId)"
+            class="Editlistcard"
+          ></button>
+          <router-link class="testp" :to="listObject.url">
+            <p>{{ listObject.title }}</p>
+          </router-link>
+        </div>
+      </div>
+      <div v-else>
+        <p class="listp">
+          No Lists added yet
+        </p>
       </div>
     </div>
     <div v-else>
@@ -38,7 +45,7 @@
         :listId="AddTaskListId"
       />
 
-      <div class="desktop-list-card-container">
+      <div v-if="ListExist" class="desktop-list-card-container">
         <div
           class="desktop-list-card"
           v-for="(listObject, listObjectId, listArrayNumber) in this.$store
@@ -53,6 +60,14 @@
           ></button>
           <task-card :listId="listObjectId" />
           <plus-button @openOverlay="OpenAddTaskOverlay(listObjectId)" />
+        </div>
+      </div>
+      <div v-else>
+        <div class="image-container">
+          <p class="listp">
+            No Lists added yet
+          </p>
+          <img class="EmptyListimage" src="@/assets/EmptyLists.svg" />
         </div>
       </div>
     </div>
@@ -104,6 +119,11 @@
     },
     mounted() {
       window.onresize = this.onResize
+    },
+    computed: {
+      ListExist() {
+        return Boolean(Object.keys(this.$store.state.listObjects).length)
+      }
     }
   }
 </script>
@@ -152,12 +172,53 @@
     display: none;
   }
 
+  .listp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #787885;
+    margin: 30px;
+  }
+
   .testp {
     justify-self: center;
     align-self: center;
     margin: auto;
     color: white;
   }
+
   @media only screen and (min-device-width: 1000px) {
+    .listp {
+      display: block;
+      font-size: 16px;
+      font-style: normal;
+      height: inherit;
+      font-weight: 600;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #787885;
+      margin-top: 250px;
+    }
+    .EmptyListimage {
+      height: 250px;
+      width: 250px;
+    }
+
+    .image-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 </style>

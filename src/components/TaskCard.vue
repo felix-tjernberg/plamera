@@ -192,7 +192,6 @@
     align-content: center;
     align-items: center;
     height: 400px;
-
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
