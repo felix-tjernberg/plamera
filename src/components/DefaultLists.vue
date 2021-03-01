@@ -70,8 +70,7 @@
   .DesktopIcons {
     display: none;
   }
-  .MobileIcons {
-  }
+
 
   #ML {
     display: none;
