@@ -1,85 +1,130 @@
 <template>
   <div id="defaultLists">
-    <div>
-      <router-link to="/" id="ML">My List</router-link>
-    </div>
-    <div>
-      <img class="MobileIcons" src="@/assets/Task-Completed-Icon.png" alt="" />
+    <div class="completedRow">
+      <img
+        class="MobileIcons"
+        src="@/assets/filledCircle.svg"
+        id="filledCircle"
+        alt=""
+      />
       <router-link :to="'/completed'" id="completed"> Completed </router-link
       ><img
         class="DesktopIcons"
-        src="@/assets/Task-Completed-Icon.png"
+        src="@/assets/filledCircle.svg"
         alt=""
+        id="filledCircle"
       />
     </div>
-    <div>
-      <img class="MobileIcons" src="@/assets/Star-Icon.png" alt="" id="star" />
+
+    <div class="importantRow">
+      <img
+        class="MobileIcons"
+        src="@/assets/filledStar.svg"
+        alt=""
+        id="filledStar"
+      />
       <router-link :to="'/important'" id="important"> Important </router-link
       ><img
         class="DesktopIcons"
-        src="@/assets/Star-Icon.png"
+        src="@/assets/filledStar.svg"
         alt=""
-        id="star"
+        id="filledStar"
       />
+    </div>
+
+    <div>
+      <router-link to="/" id="ML">My List</router-link>
     </div>
   </div>
 </template>
 <style scoped>
+  #defaultLists {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  #filledStar {
+    width: 23px;
+    height: 23px;
+  }
+
+  #filledCircle {
+    width: 23px;
+    height: 23px;
+  }
+  .completedRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .importantRow {
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .DesktopIcons {
     display: none;
   }
-  .MobileIcons {
-    display: block;
-  }
+
+
   #ML {
-    display: none;
-  }
-  #ML2 {
     display: none;
   }
 
   #completed {
+    margin-left: 5px;
     color: black;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
     text-decoration: none;
-    padding: 20px;
   }
   #important {
+    margin-left: 5px;
     color: black;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
     text-decoration: none;
-    padding: 20px;
   }
-  #defaultLists {
-    margin-left: 256px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 0vh;
-  }
-  #star {
-    width: 25px;
-    height: 25px;
-  }
+
   @media only screen and (min-device-width: 1000px) {
+    #defaultLists {
+      width: 700px;
+
+      margin-left: 256px;
+      display: flex;
+      flex-direction: row;
+      
+      align-items: flex-start;
+      align-items: center;
+      
+    }
+
+    .completedRow {
+      display: inline;
+      
+    }
+
+    .importantRow {
+      display: inline;
+     
+    }
+
     #ML {
+      margin-left: 20px;
       display: block;
       color: black;
       font-weight: 600;
       font-size: 16px;
+    
     }
-    #ML2 {
-      display: block;
-      margin-right: 10px;
-      color: rgba(0, 0, 0, 0.87);
-      font-weight: 600;
-      font-style: normal;
-      text-decoration: none;
-    }
+
     #back {
       text-decoration: none;
       color: #ffffff;
@@ -96,7 +141,6 @@
       font-weight: 600;
       font-style: normal;
       text-decoration: none;
-      padding: 20px;
     }
     #important {
       color: black;
@@ -104,13 +148,6 @@
       font-weight: 600;
       font-style: normal;
       text-decoration: none;
-      padding: 20px;
-    }
-    #defaultLists {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      margin-top: 0vh;
     }
 
     #star {

@@ -8,6 +8,7 @@ import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import TestArea from '../views/TestArea.vue'
 import settings from '../views/settings.vue'
+
 Vue.use(VueRouter)
 
 const routes = [

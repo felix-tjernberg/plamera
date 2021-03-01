@@ -2,6 +2,8 @@
   <div id="app">
     <button class="btn-back" @click="goToListOverview()" id="back">Back</button>
     <h1>{{ $route.params.listName }}</h1>
+    <DefaultLists />
+    <hr />
     <AddTask
       id="TaskOverlay"
       v-if="taskOverlay"
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+  import DefaultLists from '@/components/DefaultLists.vue'
   import PlusButton from '@/components/PlusButton.vue'
   import AddTask from '@/components/AddTask.vue'
   import TaskCard from '@/components/TaskCard.vue'
@@ -25,7 +28,8 @@
     components: {
       AddTask,
       TaskCard,
-      PlusButton
+      PlusButton,
+      DefaultLists
     },
     data: function() {
       return {

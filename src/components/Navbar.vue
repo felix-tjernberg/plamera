@@ -81,7 +81,15 @@
     background: none;
   }
 
+  #Desktoph1 {
+    display: none;
+  }
+
   @media only screen and (min-device-width: 1000px) {
+    #Desktoph1 {
+      display: block;
+    }
+
     ul {
       display: flex;
       flex-direction: column;
