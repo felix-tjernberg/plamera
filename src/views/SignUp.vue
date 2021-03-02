@@ -133,7 +133,7 @@
       display: block;
       width: 514px;
       height: 514px;
-      margin-left: 40%;
+      margin-left: 38%;
       margin-top: 10%;
       background-color: rgb(255, 255, 255);
       border-radius: 20px;
