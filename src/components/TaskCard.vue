@@ -228,10 +228,14 @@
   }
 
   .TaskTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: black;
     font-weight: 300;
-    align-self: center;
+    width: 80%;
     margin: auto;
+    height: 100%;
   }
   [data-completed='true'] {
     text-decoration: line-through;
