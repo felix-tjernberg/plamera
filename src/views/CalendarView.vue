@@ -1,5 +1,4 @@
 <template>
-  <p>
-    I'm empty inside
-  </p>
+
+<div> <button> hej </button></div>
 </template>
