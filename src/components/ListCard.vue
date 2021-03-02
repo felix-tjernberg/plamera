@@ -191,10 +191,14 @@
   }
 
   .testp {
-    justify-self: center;
-    align-self: center;
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
+    font-weight: 300;
+    width: 80%;
+    margin: auto;
+    height: 100%;
   }
 
   @media only screen and (min-device-width: 1000px) {
