@@ -54,12 +54,15 @@
           :style="'background:' + listObject.theme"
         >
           <h2>{{ listObject.title }}</h2>
-          <button
-            @click="OpenEditOverlay(listObjectId)"
-            class="Editlistcard"
-          ></button>
+
           <task-card :listId="listObjectId" />
-          <plus-button @openOverlay="OpenAddTaskOverlay(listObjectId)" />
+          <div id="knappar">
+            <button
+              @click="OpenEditOverlay(listObjectId)"
+              class="Editlistcard"
+            ></button>
+            <plus-button @openOverlay="OpenAddTaskOverlay(listObjectId)" />
+          </div>
         </div>
       </div>
       <div v-else>
@@ -135,7 +138,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: var(--margin-desktop);
-    margin-left: 256px;
+    margin-left: 300px;
   }
   .desktop-list-card-container h2 {
     color: white;
@@ -161,6 +164,9 @@
   }
 
   .Editlistcard {
+    background-image: no-repeat;
+    display: flex;
+    justify-content: flex-end;
     background: none;
     border: none;
     height: 20px;
@@ -202,6 +208,11 @@
   }
 
   @media only screen and (min-device-width: 1000px) {
+    #knappar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .listp {
       display: block;
       font-size: 16px;
@@ -218,7 +229,17 @@
       height: 250px;
       width: 250px;
     }
+    .Editlistcard {
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: flex-start;
 
+      border: none;
+      height: 25px;
+      width: 25px;
+      margin-left: 10px;
+      background-image: Url('~@/assets/EditDesktop.svg');
+    }
     .image-container {
       display: flex;
       align-items: center;

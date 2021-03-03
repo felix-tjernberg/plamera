@@ -53,4 +53,10 @@
     margin-left: 3vw;
     position: fixed;
   }
+  hr {
+    opacity: 0.21;
+    border: 1px solid #000000;
+    margin-bottom: 15px;
+    margin-left: 300px;
+  }
 </style>

@@ -27,7 +27,6 @@
   import ListCard from '@/components/ListCard.vue'
   import AddList from '@/components/AddList.vue'
   import Navbar from '@/components/Navbar.vue'
-
   export default {
     components: {
       ListCard,
@@ -45,7 +44,6 @@
 
 <style scoped>
   /* This selector needs to be moved */
-
   h1 {
     height: 36px;
     left: 16px;
@@ -61,8 +59,8 @@
     border: 1px solid #000000;
     margin-bottom: 15px;
     margin-top: 20px;
+    margin-left: 0;
   }
-
   /* This selector needs to be moved */
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -73,23 +71,22 @@
   input:focus /* What are these selectors for? */ {
     outline: none;
   }
-
   #DesktopButton {
     display: none;
   }
-
   @media only screen and (min-device-width: 1000px) {
     h3 {
-      margin-left: 256px;
+      margin-left: 300px;
     }
+
     hr {
       opacity: 0.21;
       border: 1px solid #000000;
       margin-bottom: 15px;
-      margin-left: 256px;
+      margin-left: 300px;
     }
     #DesktopButton {
-      margin-left: 256px;
+      margin-left: 300px;
       display: block;
       border-radius: 30px;
       background-color: #5db075;
@@ -102,7 +99,7 @@
       margin-top: -4px;
     }
     #MobilH {
-      margin-left: 256px;
+      margin-left: 300px;
       text-align: left;
       margin-bottom: 50px;
     }

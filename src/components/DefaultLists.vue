@@ -32,9 +32,7 @@
       />
     </div>
 
-    <div>
-      <router-link to="/" id="ML">My List</router-link>
-    </div>
+    <div></div>
   </div>
 </template>
 <style scoped>
@@ -42,7 +40,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
   }
 
   #filledStar {
@@ -61,7 +58,6 @@
   }
 
   .importantRow {
-  
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -70,7 +66,6 @@
   .DesktopIcons {
     display: none;
   }
-
 
   #ML {
     display: none;
@@ -97,32 +92,20 @@
     #defaultLists {
       width: 700px;
 
-      margin-left: 256px;
+      margin-left: 261px;
       display: flex;
       flex-direction: row;
-      
+
       align-items: flex-start;
       align-items: center;
-      
     }
 
     .completedRow {
       display: inline;
-      
     }
 
     .importantRow {
       display: inline;
-     
-    }
-
-    #ML {
-      margin-left: 20px;
-      display: block;
-      color: black;
-      font-weight: 600;
-      font-size: 16px;
-    
     }
 
     #back {
