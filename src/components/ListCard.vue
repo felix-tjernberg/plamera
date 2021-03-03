@@ -116,12 +116,12 @@
       closeAddTaskOverlay() {
         this.addTaskOverlay = !this.addTaskOverlay
       },
-      onResize() {
+      onResize2() {
         this.mobile = window.innerWidth < 1000
       }
     },
     mounted() {
-      window.onresize = this.onResize
+      window.onresize = this.onResize2
     },
     computed: {
       ListExist() {
