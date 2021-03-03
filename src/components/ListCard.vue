@@ -85,7 +85,7 @@
   import TaskCard from '@/components/TaskCard'
   export default {
     created() {
-      this.mobile = window.innerWidth < 990
+      this.mobile = window.innerWidth < 1000
     },
     components: {
       AddList,
@@ -117,7 +117,7 @@
         this.addTaskOverlay = !this.addTaskOverlay
       },
       onResize() {
-        this.mobile = window.innerWidth < 990
+        this.mobile = window.innerWidth < 1000
       }
     },
     mounted() {
