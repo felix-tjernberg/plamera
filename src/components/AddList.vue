@@ -10,7 +10,12 @@
       <PreviewTheme :title="title" :theme="theme"> </PreviewTheme>
       <ThemePicker class="Selection" :themes="themes" @setTheme="setTheme">
       </ThemePicker>
-      <button @click="addTask" class="addListButton" id="save">
+      <button
+        :disabled="title.length == 0"
+        @click="addTask"
+        class="addListButton"
+        id="save"
+      >
         Add List
       </button>
       <p id="close" @click="closeOverlay">Cancel</p>
@@ -47,6 +52,7 @@
         this.$store.commit('addList', {
           title: this.title,
           theme: this.theme
+          
         })
         this.closeOverlay()
       },

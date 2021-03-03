@@ -4,8 +4,20 @@
     <div class="Mobilecontainer">
       <h1>Sign up</h1>
       <input type="text" placeholder="Name" />
-      <input type="text" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <input type="text" placeholder="Email" v-model="email" required />
+      <br />
+      <span class="span-validation" v-if="message.email">{{
+        message.email
+      }}</span>
+      <input
+        type="password"
+        placeholder="Password"
+        v-model="password"
+        required
+      /><br />
+      <span class="span-validation" v-if="message.password">{{
+        message.password
+      }}</span>
       <input
         type="submit"
         value="Sign up"
@@ -20,8 +32,20 @@
       <h1 class="LoginHeader">Sign up</h1>
       <div class="inputs">
         <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="Email" v-model="email" required />
+        <br />
+        <span class="span-validation" v-if="message.email">{{
+          message.email
+        }}</span>
+        <input
+          type="password"
+          placeholder="Password"
+          v-model="password"
+          required
+        /><br />
+        <span class="span-validation" v-if="message.password">{{
+          message.password
+        }}</span>
         <p class="AlreadyHaveAccount">Already Have an account?</p>
       </div>
       <input
@@ -38,7 +62,41 @@
 
 <script>
   export default {
+    name: 'SignUp',
+    data() {
+      return {
+        password: '',
+        email: '',
+        message: []
+      }
+    },
+    watch: {
+      password(value) {
+        this.password = value
+        this.PasswordValidation(value)
+      },
+      email(value) {
+        this.email = value
+        this.EmailValidation(value)
+      }
+    },
     methods: {
+      EmailValidation(value) {
+        if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\w{2,3})+$/.test(value)) {
+          this.message['email'] = 'Required'
+        } else {
+          this.message['email'] = 'Please, enter a valid email'
+        }
+      },
+      PasswordValidation(value) {
+        
+        if (value.length < 8) {
+          this.message['password'] =
+            'Your password needs to be 8 characters'
+        } else {
+          this.message['password'] = 'Required'
+        }
+      },
       goToLogin() {
         this.$router.push('/login')
       }
@@ -60,18 +118,6 @@
     color: #5db075;
   }
 
-  span {
-    position: absolute;
-    width: 43px;
-    height: 19px;
-    right: 10px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    color: #5db075;
-    text-align: right;
-  }
   * {
     box-sizing: border-box;
   }
@@ -112,6 +158,19 @@
     opacity: 0.9;
     border-radius: 25px;
   }
+
+  .span-validation {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #ED2121;
+    padding-top: 0px;
+    margin-top: 0px;
+  }
   input[type='submit'] {
     font-style: normal;
     font-weight: 600;
@@ -133,7 +192,7 @@
       display: block;
       width: 514px;
       height: 514px;
-      margin-left: 40%;
+      margin-left: 38%;
       margin-top: 10%;
       background-color: rgb(255, 255, 255);
       border-radius: 20px;

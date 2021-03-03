@@ -13,7 +13,12 @@
       <div id="colorPicker">
         <input type="color" v-model="color" />
       </div>
-      <button @click="addTask()" class="addtaskbutton" id="save">
+      <button
+        :disabled="title.length == 0"
+        @click="addTask()"
+        class="addtaskbutton"
+        id="save"
+      >
         Add Task
       </button>
       <p id="close" @click="closeOverlay">Cancel</p>
