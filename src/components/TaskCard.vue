@@ -6,7 +6,6 @@
       v-on:closeOverlay="editTaskOverlay = !editTaskOverlay"
     />
     <div v-if="TaskExist">
-      <h3>Important</h3>
       <div
         class="TaskCard"
         v-for="(taskObject, taskObjectId) in filteredTaskObjects.important"
@@ -33,7 +32,7 @@
           "
         ></button>
       </div>
-      <h3>Rest</h3>
+      <hr />
       <!--this needs a better heading-->
       <div
         class="TaskCard"
@@ -61,7 +60,7 @@
           "
         ></button>
       </div>
-      <h3>Completed</h3>
+      <hr />
       <div
         class="TaskCard"
         v-for="(taskObject, taskObjectId) in filteredTaskObjects.completed"
@@ -172,6 +171,9 @@
     h3 {
       color: black;
     }
+  }
+  hr {
+    opacity: 0;
   }
   .TaskCard {
     border-left-color: rgb(255, 165, 0);

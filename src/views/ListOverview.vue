@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <Navbar></Navbar>
-    <h1 id="MobilH">My Tasks</h1>
+    <h1 v-if="mobile">Plamera</h1>
+    <h1 id="MobilH" v-else>My Tasks</h1>
     <default-lists />
     <hr />
     <h3>My Lists</h3>
@@ -13,11 +14,6 @@
       @closeOverlay="addListOverlay = !addListOverlay"
       id="addListOverlay"
     ></AddList>
-    <EditList
-      :listId="EditListId"
-      v-if="editListOverlay"
-      @closeOverlay="editListOverlay = !editListOverlay"
-    />
     <ListCard></ListCard>
   </div>
 </template>
@@ -34,9 +30,18 @@
       AddList,
       Navbar
     },
+    mounted() {
+      window.onresize = this.onResize
+    },
+    methods: {
+      onResize() {
+        this.mobile = window.innerWidth < 990
+      }
+    },
     data() {
       return {
-        addListOverlay: false
+        addListOverlay: false,
+        mobile: true
       }
     }
   }

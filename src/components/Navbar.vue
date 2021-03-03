@@ -120,17 +120,18 @@
     }
     li p {
       font-size: 16px;
-      color:black;
+      color: black;
     }
     h1 {
       font-size: 48px;
     }
 
-    a:hover{
-      background-color:#e8e8e8e8;
+    a:hover {
+      background-color: #e8e8e8e8;
       border-radius: 6px;
-      
     }
-  
+    a.router-link-exact-active p {
+      color: #42b983;
+    }
   }
 </style>
