@@ -154,7 +154,7 @@
     background-size: cover !important;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 100px;
     border-radius: 8px;
     background-color: #5db075;
@@ -164,14 +164,11 @@
   }
 
   .Editlistcard {
-    background-image: no-repeat;
-    display: flex;
-    justify-content: flex-end;
     background: none;
     border: none;
     height: 20px;
     width: 20px;
-    margin-left: 10px;
+    margin: 6px;
     background-image: Url('~@/assets/Edit.svg');
   }
   #DesktopButton {
@@ -193,17 +190,18 @@
     letter-spacing: 0em;
     text-align: center;
     color: #787885;
-    margin: 30px;
   }
 
-  .testp {
+  .testp,
+  p {
+    font-size: 1em;
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: 300;
-    width: 80%;
-    margin: auto;
+    font-weight: 700;
+    width: 100%;
     height: 100%;
   }
 
