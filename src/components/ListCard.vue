@@ -117,6 +117,7 @@
         this.addTaskOverlay = !this.addTaskOverlay
       },
       onResize2() {
+        console.log(window.innerWidth)
         this.mobile = window.innerWidth < 1000
       }
     },
