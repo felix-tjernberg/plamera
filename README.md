@@ -1,6 +1,6 @@
 # Group project (Plamera)
 
-A todo app with decent design :)
+Point of the project was to practice working in groups using agile workflow techniques
 
 ## Project setup
 
