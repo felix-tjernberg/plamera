@@ -1,4 +1,6 @@
-# grupp-8-projekt
+# Group project (Plamera)
+
+A todo app with decent design :)
 
 ## Project setup
 
